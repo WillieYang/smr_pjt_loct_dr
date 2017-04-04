@@ -1,7 +1,29 @@
 doctype html
 html
   head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='../bootstrap/css/pulse.bootstrap.css')
+    link(rel='stylesheet', href='../stylesheets/style.css')
   body
+    nav(class="navbar navbar-toggleable-md navbar-inverse bg-primary")
+      button(class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation") #[span(class="navbar-toggler-icon")]
+      a(class="navbar-brand" href="#") Navbar
+
+      div(class="navbar-collapse collapse show" id="navbarColor01" aria-expanded="true")
+        ul(class="navbar-nav mr-auto")
+          li(class="nav-item active")
+            a(class="nav-link" href="#") Home #[span(class="sr-only") (current)]
+          li(class="nav-item")
+            a(class="nav-link" href="#") Features
+          li(class="nav-item")
+            a(class="nav-link" href="#") Pricing
+          li(class="nav-item")
+            a(class="nav-link" href="#") About
+        form(class="form-inline")
+          input(class="form-control mr-sm-2" type="text" placeholder="Search")
+          button(class="btn btn-secondary my-2 my-sm-0" type="submit") Search
+
     block content
+    script(src='../javascripts/jquery-3.1.1.js')
+    script(src='../bootstrap/js/bootstrap.min.js')
