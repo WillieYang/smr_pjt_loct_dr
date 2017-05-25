@@ -3,15 +3,38 @@ extends layout
 block content
     .row.page-header
         .col-lg-12
-            h1 Starbucks
+            h1.text-warning Starbucks
     .row
         .col-xs-12.col-md-9
             .row
-                .col-xs-12.col-sm-6
-                    p.rating
+                .col-xs-12.col-sm-12.col-lg-6
+                    p.rating.sideword
                       span.fa.fa-star
                       span.fa.fa-star
                       span.fa.fa-star
                       span.fa.fa-star-half-o
                       span.fa.fa-star-o
-                    p.h6.list-group-item-text 301 Burgess Road, Southampton, SO16 3BA 
+                    p.h6.list-group-item-text.sideword 301 Burgess Road, Southampton, SO16 3BA 
+                    .card.card-inverse.card-primary
+                      .card-header
+                        h4.card-title.text-warning Opening hours
+                      .card-block.bg.sideword
+                        p Monday - Friday : 7:00am - 7:00pm
+                        p Saturday : 8:00 am - 5:pm
+                        p Sunday : closed
+                    .card.card-primary
+                      .card-header
+                        h4.card-title.text-warning Facilities
+                      .card-block.bg.sideword
+                        p.h4
+                          span.badge.badge-pill.badge-warning Hot Drinks
+                          | &nbsp;
+                          span.badge.badge-pill.badge-warning Food
+                          | &nbsp;
+                          span.badge.badge-pill.badge-warning Premium wifi   
+                  .col-xs-12.col-sm-12.col-lg-6.location-map
+                    .card.card-inverse.card-primary
+                      .card-header
+                        h4.card-title.text-warning Location map
+                      .card-block
+                        img.img-fluid.img-thumbnail(src="http://maps.googleapis.com/maps/api/staticmap?center=51.455041,-0.9690884&zoom=17&size=400x350&sensor=false&markers=51.455041,-0.9690884&scale=2")

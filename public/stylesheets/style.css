@@ -6,6 +6,8 @@ html body{
     background-image: url("/images/tree.jpg");
     background-size: cover;
     font-style: text-warning;
+    padding-top: 10%;
+    padding-bottom: 10%;
 }
 
 .jumbotron h1 {
@@ -18,6 +20,14 @@ html body{
 
 .sideword{
 	color: white;
+}
+
+.workblack{
+	color: black;
+}
+
+.bg {
+	background-color: black;
 }
 
 input::-webkit-input-placeholder {
