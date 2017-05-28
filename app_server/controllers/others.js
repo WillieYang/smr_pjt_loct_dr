@@ -1,6 +1,6 @@
 /* Get 'home' page. */
 module.exports.homepage = function(req, res){
-	res.render('index', {title: 'Oh! Wonderful!'})
+	res.render('index', {title: 'Find what you like!'})
 };
 
 /* Get 'about' page. */

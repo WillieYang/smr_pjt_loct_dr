@@ -1,40 +1,82 @@
 extends layout
 
 block content
-    .row.page-header
+    .row
         .col-lg-12
             h1.text-warning Starbucks
     .row
         .col-xs-12.col-md-9
             .row
                 .col-xs-12.col-sm-12.col-lg-6
-                    p.rating.sideword
-                      span.fa.fa-star
-                      span.fa.fa-star
-                      span.fa.fa-star
-                      span.fa.fa-star-half-o
-                      span.fa.fa-star-o
-                    p.h6.list-group-item-text.sideword 301 Burgess Road, Southampton, SO16 3BA 
-                    .card.card-inverse.card-primary
-                      .card-header
-                        h4.card-title.text-warning Opening hours
-                      .card-block.bg.sideword
-                        p Monday - Friday : 7:00am - 7:00pm
-                        p Saturday : 8:00 am - 5:pm
-                        p Sunday : closed
-                    .card.card-primary
-                      .card-header
-                        h4.card-title.text-warning Facilities
-                      .card-block.bg.sideword
-                        p.h4
-                          span.badge.badge-pill.badge-warning Hot Drinks
-                          | &nbsp;
-                          span.badge.badge-pill.badge-warning Food
-                          | &nbsp;
-                          span.badge.badge-pill.badge-warning Premium wifi   
-                  .col-xs-12.col-sm-12.col-lg-6.location-map
-                    .card.card-inverse.card-primary
-                      .card-header
-                        h4.card-title.text-warning Location map
-                      .card-block
-                        img.img-fluid.img-thumbnail(src="http://maps.googleapis.com/maps/api/staticmap?center=51.455041,-0.9690884&zoom=17&size=400x350&sensor=false&markers=51.455041,-0.9690884&scale=2")
+                  p.rating.sideword
+                    span.fa.fa-star
+                    span.fa.fa-star
+                    span.fa.fa-star
+                    span.fa.fa-star-half-o
+                    span.fa.fa-star-o
+                  p.h6.list-group-item-text.sideword 301 Burgess Road, Southampton, SO16 3BA 
+                  .card.card-inverse.card-primary
+                    .card-header
+                      h4.card-title.text-warning Opening hours
+                    .card-block.bg.sideword
+                      p Monday - Friday : 7:00am -  7:00pm
+                      p Saturday : 8:00 am - 5:pm
+                      p Sunday : closed
+                  .card.card-primary
+                    .card-header
+                      h4.card-title.text-warning Facilities
+                    .card-block.bg.sideword
+                      p.h4
+                        span.badge.badge-pill.badge-warning Hot Drinks
+                        | &nbsp;
+                        span.badge.badge-pill.badge-warning Food
+                        | &nbsp;
+                        span.badge.badge-pill.badge-warning Premium wifi   
+                .col-xs-12.col-sm-12.col-lg-6.location-map
+                  .card.card-inverse.card-primary
+                    .card-header
+                      h4.card-title.text-warning Location map
+                    .card-block
+                      img.img-fluid.img-thumbnail(src="http://maps.googleapis.com/maps/api/staticmap?center=51.455041,-0.9690884&zoom=17&size=400x350&sensor=false&markers=51.455041,-0.9690884&scale=2")
+                .col-lg-12
+                  hr
+            .row
+              .col-xs-12.col-lg-12
+                .card.card-primary
+                  .card-header
+                    a.btn.btn-warning.float-right(href="/locaion/review/new") Add review
+                    h4.card-title.text-warning Customer reviews
+                  .card-block.review-container
+                    .row
+                      .review
+                        .well.well-sm.review-header
+                          span.rating.sideword
+                            span.fa.fa-star
+                            span.fa.fa-star
+                            span.fa.fa-star
+                            span.fa.fa-star-half-o
+                            span.fa.fa-star-o
+                          span.reviewAuthor.sideword Jack Lee
+                          small.reviewTimestamp 25 May 2017
+                          p.sideword Quite, and the coffee is yummy!!!
+                    .row
+                      .review
+                        .well.well-sm.review-header
+                          span.rating.sideword
+                            span.fa.fa-star
+                            span.fa.fa-star
+                            span.fa.fa-star-half-o
+                            span.fa.fa-star-o
+                            span.fa.fa-star-o
+                          span.reviewAuthor.sideword Willie Rathke
+                          small.reviewTimestamp 27 May 2017
+                          p.sideword Suitable for studying, haha!!!
+        .col-xs-12.col-md-3
+          p.lead.sideword Starbucks provide accessible wifi and space to help you sit down with laptop and get work done.
+          p.sideword If you've been and you like it - or if you don't - please leave a review to help other people just like you.
+
+
+
+
+
+                          

@@ -1,5 +1,11 @@
 html body{
-	background-color:black !important;
+	height: 100%;
+    overflow: hidden;
+    background:url("/images/background.jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .jumbotron {
@@ -29,6 +35,23 @@ html body{
 .bg {
 	background-color: black;
 }
+
+.review {padding-bottom: 5px;}
+
+.panel-body.review-container {padding-top: 0;}
+
+.review-header {margin-bottom: 10px;}
+
+.reviewAuthor {margin: 0 5px;}
+
+.reviewTimestamp {color: #ccc;}
+
+h1 { color: #7c795d; 
+     font-family: 'Trocchi', serif; 
+     font-size: 45px; 
+     font-weight: normal; 
+     line-height: 48px; 
+     margin: 0; }
 
 input::-webkit-input-placeholder {
 color: black !important;
