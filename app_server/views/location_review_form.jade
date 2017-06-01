@@ -1,27 +1,29 @@
 extends layout
+
 block content
-  .row
+  .row.page-header
     .col-lg-12
       h1.text-warning Review Starbucks
+        span.fa.fa-refresh.fa-spin.fa-1x.fa-fw 
   .row
     .col-xs-12.col-md-6.mx-auto
-      .card.card-outline-primary
+      .card.card-outline-primary.bg_y
         form(action="/location", method="get", role="form")
           .form-group.card-block
-            label.col-xs-10.col-sm-2.text-warning.form-control-label(for="name") Name 
+            label.col-xs-10.col-sm-2.text-primary.form-control-label(for="name") Name 
             .col-xs-12.col-sm-10
               input#name.form-control(name="name")
           .form-group.card-block
-            label.col-xs-10.col-sm-2.text-warning.form-control-label(for="rating") Rating
+            label.col-xs-10.col-sm-2.text-primary.form-control-label(for="rating") Rating
             .col-xs-12.col-sm-2
-              select#rating.form-control.form-control-sm(name="rating")
+              select#rating(style="width:auto").form-control.form-control-sm(name="rating")
                 option 5
                 option 4
                 option 3
                 option 2
                 option 1
           .form-group.card-block
-            label.col-sm-2.text-warning.form-control-label(for="review") Review
+            label.col-sm-2.text-primary.form-control-label(for="review") Review
             .col-sm-10
               textarea#review.form-control(name="review", rows="8")
           button.btn.btn-warning.float-right Add Review

@@ -5,6 +5,6 @@ module.exports.homepage = function(req, res){
 
 /* Get 'about' page. */
 module.exports.about = function(req, res){
-	res.render('index', {title: 'About'})
+	res.render('about', {title: 'About'})
 };
 
