@@ -7,7 +7,7 @@ module.exports.locationList = function(req, res){
 		},
 		locations: [{
 			name: 'Starbucks',
-			address: '125 High Street, Reading, RG6 1PS',
+			address: '301 Burgess Road, Southampton, SO16 3BA',
 			rating: 3,
 			facilities: ['Hot drinks', 'Food', 'Premium wifi'],
 			distance: '100m'
@@ -19,7 +19,7 @@ module.exports.locationList = function(req, res){
 			distance: '200m'
 		},{
 			name: 'Burger Queen',
-			address: '125 High Street, Reading, RG6 1PS',
+			address: '154 Green Street, Newcastle Upton Tyne, NE12 2DB',
 			rating: 2,
 			facilities: ['Food', 'Premium wifi'],
 			distance: '250m'
