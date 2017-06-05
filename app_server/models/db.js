@@ -6,7 +6,7 @@ var dbURI = 'mongodb://localhost/smr_pjt_loct';
 var dbURIlog = 'mongodb://localhost/smr_pjt_log';
 
 // Connect the database using Mongoose
-var logDB = mongoose.createdConnection(dbURIlog);
+var logDB = mongoose.createConnection(dbURIlog);
 mongoose.connect(dbURI);
 
 // Monitoring the connection with Mongoose connection events(Default Database)
@@ -57,3 +57,5 @@ process.on('SIGTERM', function () {
 		process.exit(0);
 	});
 });
+// Require the locations.js model (location schema)
+require('./locations');
