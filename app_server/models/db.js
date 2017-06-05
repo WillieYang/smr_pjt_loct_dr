@@ -1,18 +1,37 @@
+// Require the Mongoose
 var mongoose = require('mongoose');
-var dbURI = 'mongodb://localhost/smr_pjt_loct';
 
+// Create the URI of database
+var dbURI = 'mongodb://localhost/smr_pjt_loct';
+var dbURIlog = 'mongodb://localhost/smr_pjt_log';
+
+// Connect the database using Mongoose
+var logDB = mongoose.createdConnection(dbURIlog);
 mongoose.connect(dbURI);
 
+// Monitoring the connection with Mongoose connection events(Default Database)
 mongoose.connection.on('connected', function () {
 	console.log('Mongoose connected to ' + dbURI);
 });
+
 mongoose.connection.on('error', function (err) {
 	console.log('Mongoose connection error: ' + err);
 });
+
 mongoose.connection.on('disconnected', function () {
 	console.log('Mongoose disconnected');
 });
 
+// Monitoring the connection with Mongoose connection events(Created database)
+logDB.on('connected', function () {
+	console.log('Mongoose connected to ' + dbURIlog);
+});
+
+logDB.close(function () {
+	console.log('Mongoose log disconnected');
+});
+
+// Create a function to shutdown the connection.
 var gracefulShutdown = function (msg, callback){
 	mongoose.connection.close(function(){
 		console.log('Mongoose disconnected through ' + msg);
@@ -20,6 +39,7 @@ var gracefulShutdown = function (msg, callback){
 	});
 };
 
+// Different situation when the connection is terminated.
 process.once('SIGUSR2', function () {
 	gracefulShutdown('nodemon restart', function () {
 		process.kill(process.pid, 'SIGUSR2');
