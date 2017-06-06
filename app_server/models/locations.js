@@ -9,7 +9,7 @@ var openingTimeSchema = new mongoose.Schema({
 	closed: {type: Boolean, required: true}
 });
 
-// Schema for Reviews (Nested Schema of locationShema)
+// Schema for Reviews (Nested Schema of locationSchma)
 var reviewSchema = new mongoose.Schema({
 	author: String,
 	rating: {type: Number, "default": 0, min: 0, max: 5},
@@ -27,3 +27,9 @@ var locationSchema = new mongoose.Schema({
 	openingTime: [openingTimeSchema],
 	reviews: [reviewSchema]
 });
+
+// Compiling the Schema into Model
+// First parameter is the name of model, 
+// and the second parameter is the name of schema.
+
+mongoose.model('Location', locationSchema);
