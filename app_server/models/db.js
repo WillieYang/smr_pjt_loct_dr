@@ -1,9 +1,12 @@
 // Require the Mongoose
 var mongoose = require('mongoose');
 
-// Create the URI of database
+// Create the URI of database and set it based on environment.
 var dbURI = 'mongodb://localhost/smr_pjt_loct';
-var dbURIlog = 'mongodb://localhost/smr_pjt_log';
+if (process.env.NODE_ENV === 'production') {
+	dbURI = 'mongodb://heroku_60bjp5jd:i5cbaqvmvnf1tan9hcu9li48s7@ds115712.mlab.com:15712/heroku_60bjp5jd';
+}
+var dbURIlog = 'mongodb://localhost/smr_pjt_loctog';
 
 // Connect the database using Mongoose
 var logDB = mongoose.createConnection(dbURIlog);

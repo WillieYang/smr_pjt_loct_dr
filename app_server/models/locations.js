@@ -31,5 +31,4 @@ var locationSchema = new mongoose.Schema({
 // Compiling the Schema into Model
 // First parameter is the name of model, 
 // and the second parameter is the name of schema.
-
 mongoose.model('Location', locationSchema);
