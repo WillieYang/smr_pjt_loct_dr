@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 
 // Create the URI of database and set it based on environment.
-var dbURI;
+var dbURI = 'mongodb://localhost/smr_pjt_loct';
 if (process.env.NODE_ENV === 'production') {
 	console.log("test:" + process.env.MONGODB_URI);
 	dbURI = process.env.MONGODB_URI;
@@ -12,7 +12,14 @@ var dbURIlog = 'mongodb://localhost/smr_pjt_loctog';
 
 // Connect the database using Mongoose
 var logDB = mongoose.createConnection(dbURIlog);
-mongoose.connect(dbURI);
+
+mongoose.connect(dbURI, function (err, res) {
+  if (err) {
+  console.log ('ERROR connecting to: ' + dbURI + '. ' + err);
+  } else {
+  console.log ('Succeeded connected to: ' + dbURI);
+  }
+});
 
 // Monitoring the connection with Mongoose connection events(Default Database)
 mongoose.connection.on('connected', function() {
