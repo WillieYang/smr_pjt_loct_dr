@@ -2,12 +2,12 @@
 var mongoose = require('mongoose');
 
 // Create the URI of database and set it based on environment.
-var dbURI = 'mongodb://localhost/smr_pjt_loct';
-if (process.env.NODE_ENV === 'production') {
-	console.log("test:" + process.env.MONGODB_URI);
-	dbURI = process.env.MONGODB_URI;
-	console.log('test the dbURI' + dbURI);
-}
+var dbURI = 'mongodb://heroku_60bjp5jd:i5cbaqvmvnf1tan9hcu9li48s7@ds115712.mlab.com:15712/heroku_60bjp5jd';
+// if (process.env.NODE_ENV === 'production') {
+// 	console.log("test:" + process.env.MONGODB_URI);
+// 	dbURI = process.env.MONGODB_URI;
+// 	console.log('test the dbURI' + dbURI);
+// }
 var dbURIlog = 'mongodb://localhost/smr_pjt_loctog';
 
 // Connect the database using Mongoose
