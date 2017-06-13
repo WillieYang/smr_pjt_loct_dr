@@ -6,6 +6,7 @@ var dbURI = 'mongodb://localhost/smr_pjt_loct';
 if (process.env.NODE_ENV === 'production') {
 	console.log("test:" + process.env.MONGODB_URI);
 	dbURI = process.env.MONGODB_URI;
+	console.log('test the dbURI' + dbURI);
 }
 var dbURIlog = 'mongodb://localhost/smr_pjt_loctog';
 
@@ -19,7 +20,6 @@ mongoose.connection.on('connected', function() {
 });
 
 mongoose.connection.on('error', function(err) {
-	console.log('test the dbURI' + dbURI);
 	console.log('Mongoose connection error: ' + err);
 });
 
