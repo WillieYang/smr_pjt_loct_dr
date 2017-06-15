@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'production') {
 // var dbURIlog = 'mongodb://localhost/smr_pjt_loctog';
 
 // Connect the database using Mongoose
-var logDB = mongoose.createConnection(dbURIlog);
+// var logDB = mongoose.createConnection(dbURIlog);
 
 mongoose.connect(dbURI, function (err, res) {
   if (err) {
