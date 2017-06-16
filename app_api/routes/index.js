@@ -1,5 +1,5 @@
-var experss = require('express');
-var router = experss.Router();
+var express = require('express');
+var router = express.Router();
 var ctrlLocations = require('../controllers/locations');
 var ctrlReviews = require('../controllers/reviews');
 

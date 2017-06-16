@@ -8,26 +8,26 @@ var sendJsonResponse = function(res, status, content){
 };
 
 // create
-module.exports.locationCreate = function(req, res){
+module.exports.locationsCreate = function(req, res){
 	sendJsonResponse(res, 200, {"status": "success"});
 };
 
 // get 
-module.exports.locationListByDistance = function(req, res){
+module.exports.locationsListByDistance = function(req, res){
 	sendJsonResponse(res, 200, {"status": "success"});
 };
 
 // get
-module.exports.locationReadOne = function(req, res){
+module.exports.locationsReadOne = function(req, res){
 	sendJsonResponse(res, 200, {"status": "success"});
 };
 
 // put
-module.exports.locationUpdateOne = function(req, res){
+module.exports.locationsUpdateOne = function(req, res){
 	sendJsonResponse(res, 200, {"status": "success"});
 };
 
 // delete
-module.exports.locationDelete = function(req, res){
+module.exports.locationsDeleteOne = function(req, res){
 	sendJsonResponse(res, 200, {"status": "success"});
 };
