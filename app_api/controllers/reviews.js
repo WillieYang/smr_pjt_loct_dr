@@ -1,7 +1,25 @@
-module.exports.reviewsCreate = function(req, res){};
+// function to return JSON data and status code.
+var sendJsonResponse = function(res, status, content){
+	res.status(status);
+	res.json(content);
+};
 
-module.exports.reviewsReadOne = function(req, res){};
+// create
+module.exports.reviewsCreate = function(req, res){
+	sendJsonResponse(res, 200, {"status": "success"});
+};
 
-module.exports.reviewsUpdateOne = function(req, res){};
+// get
+module.exports.reviewsReadOne = function(req, res){
+	sendJsonResponse(res, 200, {"status": "success"});
+};
 
-module.exports.reviewsDeleteOne = function(req, res){};
+// put
+module.exports.reviewsUpdateOne = function(req, res){
+	sendJsonResponse(res, 200, {"status": "success"});
+};
+
+// delete
+module.exports.reviewsDeleteOne = function(req, res){
+	sendJsonResponse(res, 200, {"status": "success"});
+};
