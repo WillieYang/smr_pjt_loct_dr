@@ -28,21 +28,7 @@ module.exports.locationsReadOne = function(req, res){
 	          sendJsonResponse(res, 404, {
 	            "message": "locationid not found"
 	          });
-
-	 //        Location.find({
-		//     '_id': { $in: [
-		//         mongoose.Types.ObjectId('5937c4c18f3da38b9429bba8'),
-		//         mongoose.Types.ObjectId('5937c1ce8f3da38b9429bba5'), 
-		//         mongoose.Types.ObjectId('5937bcdb8f3da38b9429bba1')
-		//     ]}
-		// }, function(err, docs){
-		//      console.log(docs);
-		// });
-
-
-
-	          // console.log(Location.find());
-	          return;
+			  return;
 	        } else if (err) {
 	          console.log(err);
 	          sendJsonResponse(res, 404, err);
@@ -58,16 +44,6 @@ module.exports.locationsReadOne = function(req, res){
 	    });
 	  }
 	};
-
-// 	Location
-// 		.findById(ObjectId(req.params.locationid))
-// 		.exec(function(err, location){
-// 			sendJsonResponse(res, 200, location);
-// 			console.log(location);
-// 		});
-// 		console.log(ObjectId(req.params.locationid));
-// 		console.log(typeof(ObjectId(req.params.locationid)));
-// };
 
 // put
 module.exports.locationsUpdateOne = function(req, res){
