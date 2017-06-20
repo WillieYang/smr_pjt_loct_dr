@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var Location = mongoose.model('Location');
-var ObjectId = require('mongodb').ObjectID;
 
 // function to return JSON data and status code.
 var sendJsonResponse = function(res, status, content){
@@ -39,7 +38,7 @@ module.exports.locationsReadOne = function(req, res){
 	      });
 	  } else {
 	    console.log('No locationid specified');
-	    sendJSONresponse(res, 404, {
+	    sendJsonResponse(res, 404, {
 	      "message": "No locationid in request"
 	    });
 	  }
