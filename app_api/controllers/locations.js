@@ -42,7 +42,20 @@ module.exports.locationsListByDistance = function(req, res){
 		maxDistance: theEarth.getRadiansFromDistance(20),
 		num = 10 
 	};
-	Location.geoNear(point, geoOptions, callback);
+	Location.geoNear(point, geoOptions, function(err, results, stats){
+		var locations = [];
+		results.forEach(function(loc){
+			locations.push({
+				distance: theEarth.getDistanceFromRadians(loc.dis),
+				name: loc.obj.name,
+				address: loc.obj.address,
+				rating: loc.obj.rating,
+				facilities: loc.obj.facilities,
+				_id: loc.obj._id
+			});
+		});
+		sendJsonResponse(res, 200, locations);
+	});
 };
 
 // get
