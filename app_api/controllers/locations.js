@@ -7,6 +7,23 @@ var sendJsonResponse = function(res, status, content){
 	res.json(content);
 };
 
+// functions to limit the results of distance
+// using IIFE to wrap the code
+var theEarth = (function{
+
+	var earthRadius = 6371;
+	var getDistanceFromRadians = function(rads){
+		return parseFloat(rads * earthRadius);};
+
+	var getRadiansFromDistance = function(distance){
+		return parseFloat(distance / earthRadius);};
+
+	return {
+		getDistanceFromRadians: getDistanceFromRadians,
+		getRadiansFromDistance: getRadiansFromDistance
+	};
+})();
+
 // create
 module.exports.locationsCreate = function(req, res){
 	sendJsonResponse(res, 200, {"status": "success"});
@@ -14,7 +31,18 @@ module.exports.locationsCreate = function(req, res){
 
 // get 
 module.exports.locationsListByDistance = function(req, res){
-	sendJsonResponse(res, 200, {"status": "success"});
+	var lng = parseFloat(req.query.lng);
+	var lat = parseFloat(req.query.lat);
+	var point = {
+		type: "Point",
+		coordinates: [lng. lat]
+	};
+	var geoOptions = {
+		spherical: true,
+		maxDistance: theEarth.getRadiansFromDistance(20),
+		num = 10 
+	};
+	Location.geoNear(point, geoOptions, callback);
 };
 
 // get
