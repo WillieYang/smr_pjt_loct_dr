@@ -9,9 +9,10 @@ var sendJsonResponse = function(res, status, content){
 
 // functions to limit the results of distance
 // using IIFE to wrap the code
-var theEarth = (function{
+var theEarth = (function(){
 
 	var earthRadius = 6371;
+
 	var getDistanceFromRadians = function(rads){
 		return parseFloat(rads * earthRadius);};
 
@@ -33,17 +34,22 @@ module.exports.locationsCreate = function(req, res){
 module.exports.locationsListByDistance = function(req, res){
 	var lng = parseFloat(req.query.lng);
 	var lat = parseFloat(req.query.lat);
+	console.log("lng:" + lng);
+	console.log("lat:" + lat);
 	var point = {
 		type: "Point",
-		coordinates: [lng. lat]
+		coordinates: [lng, lat]
 	};
+	console.log("coordinates:" + point.coordinates[0]);
 	var geoOptions = {
 		spherical: true,
 		maxDistance: theEarth.getRadiansFromDistance(20),
-		num = 10 
+		num: 10 
 	};
 	Location.geoNear(point, geoOptions, function(err, results, stats){
 		var locations = [];
+		console.log("Geo Results:" + results);
+		console.log("Geo stats:" + stats);
 		results.forEach(function(loc){
 			locations.push({
 				distance: theEarth.getDistanceFromRadians(loc.dis),
