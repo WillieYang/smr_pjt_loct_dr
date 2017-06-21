@@ -9,6 +9,7 @@ var sendJsonResponse = function(res, status, content){
 
 // functions to limit the results of distance
 // using IIFE to wrap the code
+// this method might be useless for the format of coordinates is GeoJSON.
 var theEarth = (function(){
 
 	var earthRadius = 6371;
@@ -38,12 +39,12 @@ module.exports.locationsListByDistance = function(req, res){
 	console.log("lat:" + lat);
 	var point = {
 		type: "Point",
-		coordinates: [lng, lat]
+		coordinates: [lng, lat] // Form of GeoJSON Point.
 	};
 	console.log("coordinates:" + point.coordinates[0]);
 	var geoOptions = {
 		spherical: true,
-		maxDistance: theEarth.getRadiansFromDistance(20),
+		maxDistance: 300,
 		num: 10 
 	};
 	Location.geoNear(point, geoOptions, function(err, results, stats){
@@ -52,7 +53,7 @@ module.exports.locationsListByDistance = function(req, res){
 		console.log("Geo stats:" + stats);
 		results.forEach(function(loc){
 			locations.push({
-				distance: theEarth.getDistanceFromRadians(loc.dis),
+				distance: loc.dis,
 				name: loc.obj.name,
 				address: loc.obj.address,
 				rating: loc.obj.rating,
