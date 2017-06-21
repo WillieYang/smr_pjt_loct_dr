@@ -47,11 +47,21 @@ module.exports.locationsListByDistance = function(req, res){
 		maxDistance: 300,
 		num: 10 
 	};
+	if (!lng || !lat) {
+		sendJsonResponse(res, 404, {
+			"message": "longitude and latitude query are required"
+		});
+		return;
+	}
 	Location.geoNear(point, geoOptions, function(err, results, stats){
 		var locations = [];
 		console.log("Geo Results:" + results);
 		console.log("Geo stats:" + stats);
-		results.forEach(function(loc){
+
+		if (err){
+			sendJsonResponse(res, 404, err);
+		} else {
+		  results.forEach(function(loc){
 			locations.push({
 				distance: loc.dis,
 				name: loc.obj.name,
@@ -61,7 +71,8 @@ module.exports.locationsListByDistance = function(req, res){
 				_id: loc.obj._id
 			});
 		});
-		sendJsonResponse(res, 200, locations);
+		sendJsonResponse(res, 200, locations);			
+		}
 	});
 };
 
