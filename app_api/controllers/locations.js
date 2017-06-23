@@ -133,7 +133,7 @@ module.exports.locationsReadOne = function(req, res){
 module.exports.locationsUpdateOne = function(req, res){
 	if (!req.params.locationid) {
 		sendJsonResponse(res, 404, {
-			"message", "Not found, locationid required"
+			"message": "Not found, locationid required"
 		});
 		return;
 	}
