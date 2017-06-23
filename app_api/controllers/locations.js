@@ -28,6 +28,10 @@ var theEarth = (function(){
 
 // create
 module.exports.locationsCreate = function(req, res){
+	console.log("openingDays:" + req.body.days1);
+	console.log("openingTimes:" + req.body.opening1);
+	console.log("closingTimes:" + req.body.closing1);
+
 	Location.create({
 		name: req.body.name,
 		address: req.body.address,
