@@ -48,8 +48,41 @@ var addReview = function(req, res, location) {
 	        thisReview = location.reviews[location.reviews.length - 1];
 	        sendJsonResponse(res, 201, thisReview);
 	      }
-	    });
-  }
+	   });
+    }
+};
+
+var updateAverageRating = function(locationid){
+	Location
+		.findById()
+		.select()
+		.exec(
+			function(err, location){
+				if (!err) {
+					setAverageRating();
+				}
+			}
+		);
+};
+
+var setAverageRating = function(location){
+	var i, reviewCount, ratingAverage, ratingTotal;
+	if (location.reviews && locaiton.reviews.length > 0) {
+		reviewCount = location.reviews.length;
+		ratingTotal = 0;
+		for (i = 0; i < reviewCount; i++) {
+			ratingTotal = location.reviews[i].rating + ratingTotal;
+		}
+		ratingAverage = parseInt(ratingTotal / reviewCount, 10);
+		location.rating = ratingAverage;
+		location.save(function(err){
+			if (err) {
+				console.log(err);
+			} else {
+				console.log("Average rating updated to:", ratingAverage);
+			}
+		}); 
+	}
 };
 
 // get
