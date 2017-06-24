@@ -36,8 +36,21 @@ module.exports.locationList = function(req, res){
 		}
 	};
 	request(requestOptions, function(err, response, body){
+		console.log("responseBody" + body);
+		var i, data;
+		data = body;
+		if (response.statusCode === 200 && data.length) {
+			for (i = 0; i < data.length; i++){
+			data[i].distance = DistanceFormat(data[i].distance);
+			}
+		}
 		renderLocationList(req, res, body);
 	});
+};
+// function to format the distance
+var DistanceFormat = function(distance){
+	var formatDistance = distance.toFixed(0);
+	return formatDistance + "m";
 };
 
 /* Get 'location infomation' page. */
