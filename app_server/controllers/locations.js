@@ -1,6 +1,15 @@
 // import the request module into this file
 var request = require('request');
 
+// set the different options both in local and living environment.
+var apiChoosing = {
+	server: "http://localhost:3000"
+};
+
+if (process.env.NODE_ENV === 'production') {
+	apiChoosing.server = "https://smr-pjt-loct-dr.herokuapp.com";
+} 
+
 /* Get 'home' page. */
 module.exports.locationList = function(req, res){
 	res.render('locations_list', {
