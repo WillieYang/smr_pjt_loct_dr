@@ -1,3 +1,6 @@
+// import the request module into this file
+var request = require('request');
+
 /* Get 'home' page. */
 module.exports.locationList = function(req, res){
 	res.render('locations_list', {
