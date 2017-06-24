@@ -12,31 +12,13 @@ if (process.env.NODE_ENV === 'production') {
 
 /* Get 'Location List' page. */
 // render function of get the location list
-var renderLocationList = function(req, res){
+var renderLocationList = function(req, res, responseBody){
 	res.render('locations_list', {
 		title: 'Find places to work near you!',
 		pageHeader: {
 			title: 'Find places to work near you!'
 		},
-		locations: [{
-			name: 'Starbucks',
-			address: '301 Burgess Road, Southampton, SO16 3BA',
-			rating: 3,
-			facilities: ['Hot drinks', 'Food', 'Premium wifi'],
-			distance: '100m'
-		},{
-			name: 'Cafe Hero',
-			address: '125 High Street, Reading, RG6 1PS',
-			rating: 4,
-			facilities: ['Hot drinks', 'Food', 'Premium wifi'],
-			distance: '200m'
-		},{
-			name: 'Burger Queen',
-			address: '154 Green Street, Newcastle Upton Tyne, NE12 2DB		',
-			rating: 2,
-			facilities: ['Food', 'Premium wifi'],
-			distance: '250m'
-		}] 
+		locations: responseBody
 	});
 };
 // Get: Location List
@@ -54,7 +36,7 @@ module.exports.locationList = function(req, res){
 		}
 	};
 	request(requestOptions, function(err, response, body){
-		renderLocationList(req, res);
+		renderLocationList(req, res, body);
 	});
 };
 
