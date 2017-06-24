@@ -10,7 +10,8 @@ if (process.env.NODE_ENV === 'production') {
 	apiChoosing.server = "https://smr-pjt-loct-dr.herokuapp.com";
 } 
 
-/* Get 'home' page. */
+/* Get 'Location List' page. */
+// render function of get the location list
 var renderLocationList = function(req, res){
 	res.render('locations_list', {
 		title: 'Find places to work near you!',
@@ -38,9 +39,23 @@ var renderLocationList = function(req, res){
 		}] 
 	});
 };
-
+// Get: Location List
 module.exports.locationList = function(req, res){
-	renderLocationList(req, res);
+	var requestOptions, path;
+	path = '/api/locations';
+	requestOptions = {
+		url: apiChoosing.server + path,
+		method: "GET",
+		json: {},
+		qs: {
+			lng: -1.390814,
+			lat: 50.938497,
+			maxDistance: 300
+		}
+	};
+	request(requestOptions, function(err, response, body){
+		renderLocationList(req, res);
+	});
 };
 
 /* Get 'location infomation' page. */
