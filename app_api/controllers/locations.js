@@ -73,7 +73,7 @@ module.exports.locationsListByDistance = function(req, res){
 		maxDistance: 300,
 		num: 10 
 	};
-	if (!lng || !lat) {
+	if ((!lng && lng!== 0) || (!lat && lat!== 0)) {
 		sendJsonResponse(res, 404, {
 			"message": "longitude and latitude query are required"
 		});

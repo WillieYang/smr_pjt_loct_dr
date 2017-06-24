@@ -11,7 +11,8 @@ block content
           small.lead &nbsp;#{pageHeader.title}
   .row
     .col-xs-12.col-sm-8.col-lg-6
-      .error= errorMessage
+      h4.text-warning
+        error= errorMessage
       .row.list-group
       each location in locations
         .col-xs-12.col-lg-12.list-group-item.list-group-item-action.active

@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'production') {
 var renderLocationList = function(req, res, responseBody){
 	var errorMessage;
 	if (!(responseBody instanceof Array)) {
-		errormessage = "API fetching error";
+		errorMessage = "API fetching error";
 		responseBody = [];
 	} else {
 		if (!responseBody.length) {
