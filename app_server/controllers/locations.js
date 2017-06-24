@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'production') {
 } 
 
 /* Get 'home' page. */
-module.exports.locationList = function(req, res){
+var renderLocationList = function(req, res){
 	res.render('locations_list', {
 		title: 'Find places to work near you!',
 		pageHeader: {
@@ -36,7 +36,11 @@ module.exports.locationList = function(req, res){
 			facilities: ['Food', 'Premium wifi'],
 			distance: '250m'
 		}] 
-	})
+	});
+};
+
+module.exports.locationList = function(req, res){
+	renderLocationList(req, res);
 };
 
 /* Get 'location infomation' page. */
