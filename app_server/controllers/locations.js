@@ -64,8 +64,9 @@ var DistanceFormat = function(distance){
 };
 
 /* Get 'location infomation' page. */
-module.exports.locationInfo = function(req, res){
-	res.render('location_info', {
+// render function to get the detailed page
+var renderDetailPage = function(req, res){
+		res.render('location_info', {
 		title: 'Sainsbury Local',
 		pageHeader: {
 			title: 'Sainsbury Local'
@@ -106,7 +107,11 @@ module.exports.locationInfo = function(req, res){
 				reviewText: 'Suitable for studying, haha!!!'
 			}]
 		}
-	})
+	})	
+};
+
+module.exports.locationInfo = function(req, res){
+	renderDetailPage(req, res);
 };
 
 /* Get 'Add Review' page. */
