@@ -54,7 +54,7 @@ module.exports.locationsCreate = function(req, res){
 		}else {
 			sendJsonResponse(res, 201, location);
 		}
-	});
+	}); console.log("facilities:" + req.body.facilities.split(","));
 };
 
 // get 

@@ -13,12 +13,22 @@ if (process.env.NODE_ENV === 'production') {
 /* Get 'Location List' page. */
 // render function of get the location list
 var renderLocationList = function(req, res, responseBody){
+	var errorMessage;
+	if (!(responseBody instanceof Array)) {
+		errormessage = "API fetching error";
+		responseBody = [];
+	} else {
+		if (!responseBody.length) {
+			errorMessage = "No places found nearby"
+		}
+	}
 	res.render('locations_list', {
 		title: 'Find places to work near you!',
 		pageHeader: {
 			title: 'Find places to work near you!'
 		},
-		locations: responseBody
+		locations: responseBody,
+		errorMessage: errorMessage
 	});
 };
 // Get: Location List
