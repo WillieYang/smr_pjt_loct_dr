@@ -54,7 +54,12 @@ module.exports.locationList = function(req, res){
 			data[i].distance = DistanceFormat(data[i].distance);
 			}
 		}
-		renderLocationList(req, res, body);
+		if (data === body) {
+			console.log("These two vars are equal.");
+		} else {
+			console.log("These two varsx are not equal.");
+		}
+		renderLocationList(req, res, data);
 	});
 };
 // function to format the distance
@@ -65,61 +70,39 @@ var DistanceFormat = function(distance){
 
 /* Get 'location infomation' page. */
 // render function to get the detailed page
-var renderDetailPage = function(req, res){
+var renderDetailPage = function(req, res, locationInfo){
+		console.log("name:" + locationInfo.name);
 		res.render('location_info', {
-		title: 'Sainsbury Local',
+		title: locationInfo.name,
 		pageHeader: {
-			title: 'Sainsbury Local'
+			title: locationInfo.name
 		},
 		sidebar: {
 			context: 'provide accessible wifi and space to help you sit down with laptop and get work done.',
 			callToAction: "If you've been and you like it - or if you don't - please leave a review to help other people just like you."
 		},
-		location: {
-			name: 'Sainsbury\'s Local',
-			address: '301 Burgess Road, Southampton, SO16 3BA',
-			rating: 3,
-			facilities: ['Hot drinks', 'Food', 'Premium wifi'],
-			coords: {lat: 50.938497, lng: -1.390814},
-			openingTimes: [{
-				days: 'Monday - Friday',
-				opening: '7:00am',
-				closing: '7:00pm',
-				closed: false
-			},{
-				days: 'Saturday',
-				opening: '8:00am',
-				closing: '5:00pm',
-				closed: false
-			},{
-				days: 'Sunday',
-				closed: true
-			}],
-			reviews: [{
-				author: 'Jack Lee',
-				rating: 5,
-				timestamp: '16 May 2017',
-				reviewText: 'Quite, and the coffee is yummy!!!'
-				},{
-				author: 'Willie Rathke',
-				rating: 3,
-				timestamp: '27 May 2017',
-				reviewText: 'Suitable for studying, haha!!!'
-			}]
-		}
+		location: locationInfo
 	})	
 };
 
 module.exports.locationInfo = function(req, res){
 	var requestOptions, path;
-	path = '/api/locations' + req.params.locationid;
+	path = '/api/locations/' + req.params.locationid;
+	console.log("locaiton id:" + req.params.locationid);
+	console.log("path:" + path);
 	requestOptions = {
 		url: apiChoosing.server + path,
 		method: "GET",
 		json: {},
 	};
 	request(requestOptions, function(err, response, body){
-		renderDetailPage(req, res);
+		var data = body;
+		console.log("lng:" + body.coords[0]);
+		data.coords = {
+			lng: body.coords[0],
+			lat: body.coords[1]
+		};
+		renderDetailPage(req, res, data);
 	});
 };
 
