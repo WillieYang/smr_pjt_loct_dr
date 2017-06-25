@@ -55,7 +55,8 @@ block content
                           span.rating.sideword
                             +outputRating(review.rating)
                           span.reviewAuthor.sideword #{review.author}
-                          small.reviewTimestamp #{review.timestamp}
+                          small.reviewTimestamp
+                            +formatDate(review.createdOn)
                           p.sideword !{(review.reviewText).replace(/\n/g, '<br/>')}
       .col-xs-12.col-md-3
         p.lead.sideword #{location.name} #{sidebar.context}
