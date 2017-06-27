@@ -137,8 +137,8 @@ module.exports.locationInfo = function(req, res){
 // render the addReview page
 var renderReviewForm = function(req, res, locationInfo){
 	res.render('location_review_form', {
-		title: 'Review of ' + locationInfo.name,
-		pageHeader: {title: 'Review of ' + locationInfo.name} 
+		title: 'Add Review for ' + locationInfo.name,
+		pageHeader: {title: 'Add Review for ' + locationInfo.name} 
 	});
 };
 
@@ -151,5 +151,25 @@ module.exports.addReview = function(req, res){
 
 /* Post 'Add Review' page. */
 module.exports.addReview_post = function(req, res){
-
+	var requestOptions, path, locationid, postdata;
+	locationid = req.params.locationid;
+	console.log("location id of addReview: " + locationid);
+	path = '/api/locations/' + locationid + '/reviews/';
+	postdata = {
+		author: req.body.name,
+		rating: parseInt(req.body.rating, 10),
+		reviewText: req.body.review
+	};
+	requestOptions = {
+		url: apiChoosing.server + path,
+		method: "POST",
+		json: postdata
+	};
+	request(requestOptions, function(err, response, body){
+		if (response.statusCode === 201) {
+			res.redirect('/location/' + locationid);
+		} else {
+			showError(req, res, response.statusCode);
+		}
+	});
 };
