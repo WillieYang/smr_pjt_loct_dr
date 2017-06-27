@@ -138,7 +138,8 @@ module.exports.locationInfo = function(req, res){
 var renderReviewForm = function(req, res, locationInfo){
 	res.render('location_review_form', {
 		title: 'Add Review for ' + locationInfo.name,
-		pageHeader: {title: 'Add Review for ' + locationInfo.name} 
+		pageHeader: {title: 'Add Review for ' + locationInfo.name},
+		error: req.query.err 
 	});
 };
 
