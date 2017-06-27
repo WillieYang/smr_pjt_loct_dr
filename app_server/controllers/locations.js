@@ -57,7 +57,7 @@ module.exports.locationList = function(req, res){
 		if (data === body) {
 			console.log("These two vars are equal.");
 		} else {
-			console.log("These two varsx are not equal.");
+			console.log("These two vars are not equal.");
 		}
 		renderLocationList(req, res, data);
 	});
@@ -85,6 +85,22 @@ var renderDetailPage = function(req, res, locationInfo){
 	})	
 };
 
+// status error message function
+var showError = function(req,res, statusCode){
+	var title, content;
+	if (statusCode === 404) {
+		title = "404 Not Found";
+		content = "Sorry, the page is not existed. Please try again!!!";
+	} else {
+		title = statusCode + ", someting goes wrong, please try again!!!";
+	}
+	res.status(statusCode);
+	res.render('error', {
+		title: title,
+		content: content
+	});
+};
+
 module.exports.locationInfo = function(req, res){
 	var requestOptions, path;
 	path = '/api/locations/' + req.params.locationid;
@@ -97,12 +113,17 @@ module.exports.locationInfo = function(req, res){
 	};
 	request(requestOptions, function(err, response, body){
 		var data = body;
-		console.log("lng:" + body.coords[0]);
-		data.coords = {
-			lng: body.coords[0],
-			lat: body.coords[1]
-		};
-		renderDetailPage(req, res, data);
+		if (response.statusCode === 200) {
+			console.log("lng:" + body.coords[0]);
+			data.coords = {
+				lng: body.coords[0],
+				lat: body.coords[1]
+			};
+			renderDetailPage(req, res, data);	
+		} else {
+			showError(req, res, response.statusCode);
+		}
+		
 	});
 };
 
