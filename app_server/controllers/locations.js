@@ -101,7 +101,8 @@ var showError = function(req,res, statusCode){
 	});
 };
 
-module.exports.locationInfo = function(req, res){
+// function to get location information
+var getLocationInfo = function(req, res, callback){
 	var requestOptions, path;
 	path = '/api/locations/' + req.params.locationid;
 	console.log("locaiton id:" + req.params.locationid);
@@ -119,18 +120,36 @@ module.exports.locationInfo = function(req, res){
 				lng: body.coords[0],
 				lat: body.coords[1]
 			};
-			renderDetailPage(req, res, data);	
+			callback(req, res, data);	
 		} else {
 			showError(req, res, response.statusCode);
 		}
 		
+	});	
+};
+
+module.exports.locationInfo = function(req, res){
+	getLocationInfo(req, res, function(req, res, responseData){
+		renderDetailPage(req, res, responseData);
+	});
+};
+
+// render the addReview page
+var renderReviewForm = function(req, res, locationInfo){
+	res.render('location_review_form', {
+		title: 'Review of ' + locationInfo.name,
+		pageHeader: {title: 'Review of ' + locationInfo.name} 
 	});
 };
 
 /* Get 'Add Review' page. */
 module.exports.addReview = function(req, res){
-	res.render('location_review_form', {
-		title: 'Review Sainsbury',
-		pageHeader: {title: 'Review Sainsbury'}
-	})
+	getLocationInfo(req, res, function(req, res, responseData){
+		renderReviewForm(req, res, responseData);
+	});
+};
+
+/* Post 'Add Review' page. */
+module.exports.addReview_post = function(req, res){
+
 };
