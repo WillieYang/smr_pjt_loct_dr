@@ -11,9 +11,9 @@ var openingTimeSchema = new mongoose.Schema({
 
 // Schema for Reviews (Nested Schema of locationSchma)
 var reviewSchema = new mongoose.Schema({
-	author: String,
-	rating: {type: Number, "default": 0, min: 0, max: 5},
-	reviewText: String,
+	author: {type: String, required: true},
+	rating: {type: Number, "default": 0, min: 0, max: 5, required: true},
+	reviewText: {type: String, required:true},
 	createdOn: {type: Date, "default": Date.now} 
 });
 
