@@ -12,55 +12,17 @@ if (process.env.NODE_ENV === 'production') {
 
 /* Get 'Location List' page. */
 // render function of get the location list
-var renderLocationList = function(req, res, responseBody){
-	var errorMessage;
-	if (!(responseBody instanceof Array)) {
-		errorMessage = "API fetching error";
-		responseBody = [];
-	} else {
-		if (!responseBody.length) {
-			errorMessage = "No places found nearby"
-		}
-	}
+var renderLocationList = function(req, res){
 	res.render('locations_list', {
 		title: 'Find places to work near you!',
 		pageHeader: {
 			title: 'Find places to work near you!'
-		},
-		locations: responseBody,
-		errorMessage: errorMessage
+		}
 	});
 };
 // Get: Location List
 module.exports.locationList = function(req, res){
-	var requestOptions, path;
-	path = '/api/locations';
-	requestOptions = {
-		url: apiChoosing.server + path,
-		method: "GET",
-		json: {},
-		qs: {
-			lng: -1.390814,
-			lat: 50.938497,
-			maxDistance: 300
-		}
-	};
-	request(requestOptions, function(err, response, body){
-		console.log("responseBody" + body);
-		var i, data;
-		data = body;
-		if (response.statusCode === 200 && data.length) {
-			for (i = 0; i < data.length; i++){
-			data[i].distance = DistanceFormat(data[i].distance);
-			}
-		}
-		if (data === body) {
-			console.log("These two vars are equal.");
-		} else {
-			console.log("These two vars are not equal.");
-		}
-		renderLocationList(req, res, data);
-	});
+	renderLocationList(req, res, data);
 };
 // function to format the distance
 var DistanceFormat = function(distance){
