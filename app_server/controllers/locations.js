@@ -74,6 +74,7 @@ var getLocationInfo = function(req, res, callback){
 		method: "GET",
 		json: {},
 	};
+	console.log("url:" + apiChoosing.server + path);
 	request(requestOptions, function(err, response, body){
 		var data = body;
 		if (response.statusCode === 200) {
