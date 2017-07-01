@@ -22,7 +22,7 @@ var renderLocationList = function(req, res){
 };
 // Get: Location List
 module.exports.locationList = function(req, res){
-	renderLocationList(req, res, data);
+	renderLocationList(req, res);
 };
 // function to format the distance
 var DistanceFormat = function(distance){

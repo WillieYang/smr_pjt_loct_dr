@@ -10,22 +10,21 @@ block content
           strong.fa.fa-location-arrow
           small.lead &nbsp;#{pageHeader.title}
   .row
-    .col-xs-12.col-sm-8.col-lg-6
+    .col-xs-12.col-sm-8.col-lg-6(ng-controller="locationListCtrl")
       h4.text-warning
         error= errorMessage
       .row.list-group
-      each location in locations
-        .col-xs-12.col-lg-12.list-group-item.list-group-item-action.active
+        .col-xs-12.col-lg-12.list-group-item.list-group-item-action.active(ng-repeat="location in data.locations")
           h4.list-group-item-heading
-            a(href="/location/#{location._id}" class="text-warning")= location.name
+            a(href="/location/{{ location._id }}" class="text-warning") {{ location.name }} 
             | &nbsp;
             small
-              +outputRating(location.rating)
-            span.badge.float-right.badge-pill.badge-default= location.distance
-            p.h6.list-group-item-text= location.address
+              +outputRating{{ location.rating }}
+            span.badge.float-right.badge-pill.badge-default {{ location.distance }}
+            p.h6.list-group-item-text {{ location.address }}
             p.h6
-              each facility in location.facilities
-                span.badge.badge-pill.badge-warning= facility
+                span.badge.badge-pill.badge-warning(ng-repeat="facility in location.facilities") 
+                  {{ facility }} 
                 | &nbsp;
 
     .col-xs-12.col-sm-4
