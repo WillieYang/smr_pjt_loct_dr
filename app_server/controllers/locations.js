@@ -31,8 +31,17 @@ var renderLocationList = function(req, res, responseBody){
 		errorMessage: errorMessage
 	});
 };
+// module.exports.locationListPost = function(res,req){
+// 	console.log("locationListPost data reveal");
+// 	res.render('locations_list');
+// };
+
 // Get: Location List
 module.exports.locationList = function(req, res){
+	console.log("Passed Latitude:" + req.body.Latitude);
+	console.log("Passed Longitude:" + req.body.Longitude);
+	var lng = req.body.Longitude;
+	var lat = req.body.Latitude;
 	var requestOptions, path;
 	path = '/api/locations';
 	requestOptions = {
@@ -40,8 +49,8 @@ module.exports.locationList = function(req, res){
 		method: "GET",
 		json: {},
 		qs: {
-			lng: -1.390814,
-			lat: 50.938497,
+			lng: lng,
+			lat: lat,
 			maxDistance: 300
 		}
 	};
@@ -105,7 +114,7 @@ var showError = function(req,res, statusCode){
 var getLocationInfo = function(req, res, callback){
 	var requestOptions, path;
 	path = '/api/locations/' + req.params.locationid;
-	console.log("locaiton id:" + req.params.locationid);
+	console.log("location id:" + req.params.locationid);
 	console.log("path:" + path);
 	requestOptions = {
 		url: apiChoosing.server + path,
