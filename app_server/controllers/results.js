@@ -8,6 +8,7 @@ var renderSearchResults = function(req, res, data){
 };
 
 /* Get 'Search Results' page. */
+// This would make use of Google custome search
 module.exports.searchResults = function(req, res){
 	var requestOptions, url, searchAPI;
 
