@@ -78,7 +78,12 @@ module.exports.locationList = function(req, res){
 				console.log('address:' + location[i].vicinity);
 				console.log('facilities:' + location[i].types);
 				console.log('place_id:' + location[i].place_id);
-				results.push({name: location[i].name});
+				results.push({name: location[i].name,
+							  lat: location[i].geometry.location.lat,
+							  lng: location[i].geometry.location.lng,
+							  address: location[i].vicinity,
+							  facilities: location[i].types,
+							  place_id: location[i].place_id});
 				console.log("get data from location:"+ results.name);
 			}
 			for (var i = 0; i< results.length; i++){
@@ -87,7 +92,7 @@ module.exports.locationList = function(req, res){
 			console.log("results_name:" + JSON.stringify(results));
 			console.log("No err existed");
 			console.log("location data:" + body);
-			renderLocationList(req, res, body);
+			renderLocationList(req, res, results);
 		}
 	});
 
