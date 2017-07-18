@@ -14,6 +14,14 @@ if (process.env.NODE_ENV === 'production') {
 // render function of get the location list
 var renderLocationList = function(req, res, responseBody){
 	var errorMessage;
+	console.log("responseBody:"+ responseBody.results);
+	console.log("length:" + responseBody.results.length);
+	var results = [];
+	for (var i in responseBody.results){
+		results.push(responseBody.results[i]);
+	}
+	console.log("results:"+results);
+
 	if (!(responseBody instanceof Array)) {
 		errorMessage = "API fetching error";
 		responseBody = [];
@@ -46,7 +54,7 @@ module.exports.locationList = function(req, res){
 
 	APIKey = 'AIzaSyCh44nqumpJ45eYdA5q7PuWkXFt6sF82KY';
 	placeAPI = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'; 
-	url = placeAPI + 'location=' + lat +', ' + lng + '&radius=500' + '&key=' + APIKey;
+	url = placeAPI + 'location=' + lat +', ' + lng + '&radius=50' + '&key=' + APIKey;
 
 	requestOptions = {
 		url: url,
@@ -57,10 +65,16 @@ module.exports.locationList = function(req, res){
 		if (err) {
 			console.log("err message:"+err);
 		} else {
-			var results = JSON.parse(body);
+			console.log("body:" + body);
+			var body = JSON.parse(body);
+			var location = body.results;
+			console.log("location" + location);
+			for (var i =0; i< location.length; i++){
+				console.log("Name:"+location[i].name);
+			}
 			console.log("No err existed");
-			console.log("location data:" + results);
-			renderLocationList(req, res, results);
+			console.log("location data:" + body);
+			renderLocationList(req, res, body);
 		}
 	});
 
