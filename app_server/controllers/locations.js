@@ -14,13 +14,13 @@ if (process.env.NODE_ENV === 'production') {
 // render function of get the location list
 var renderLocationList = function(req, res, responseBody){
 	var errorMessage;
-	console.log("responseBody:"+ responseBody.results);
-	console.log("length:" + responseBody.results.length);
-	var results = [];
-	for (var i in responseBody.results){
-		results.push(responseBody.results[i]);
-	}
-	console.log("results:"+results);
+	// console.log("responseBody:"+ responseBody.results);
+	// console.log("length:" + responseBody.results.length);
+	// var results = [];
+	// for (var i in responseBody.results){
+	// 	results.push(responseBody.results[i]);
+	// }
+	// console.log("results:"+results);
 
 	if (!(responseBody instanceof Array)) {
 		errorMessage = "API fetching error";
@@ -66,12 +66,20 @@ module.exports.locationList = function(req, res){
 			console.log("err message:"+err);
 		} else {
 			console.log("body:" + body);
+			var results = [];
 			var body = JSON.parse(body);
 			var location = body.results;
 			console.log("location" + location);
 			for (var i =0; i< location.length; i++){
 				console.log("Name:"+location[i].name);
+				console.log('lat:' + location[i].geometry.location.lat);
+				console.log('lng:' + location[i].geometry.location.lng);
+				console.log('address:' + location[i].vicinity);
+				console.log('facilities:' + location[i].types);
+				console.log('place_id:' + location[i].place_id);
+				results.push({name: location[i].name});
 			}
+			console.log("results_name:" + results);
 			console.log("No err existed");
 			console.log("location data:" + body);
 			renderLocationList(req, res, body);
