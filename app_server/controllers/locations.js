@@ -42,34 +42,55 @@ module.exports.locationList = function(req, res){
 	console.log("Passed Longitude:" + req.body.Longitude);
 	var lng = req.body.Longitude;
 	var lat = req.body.Latitude;
-	var requestOptions, path;
-	path = '/api/locations';
+	var requestOptions, path, placeAPI, APIKey, url;
+
+	APIKey = 'AIzaSyCh44nqumpJ45eYdA5q7PuWkXFt6sF82KY';
+	placeAPI = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'; 
+	url = placeAPI + 'location=' + lat +', ' + lng + '&radius=500' + '&key=' + APIKey;
+
 	requestOptions = {
-		url: apiChoosing.server + path,
+		url: url,
 		method: "GET",
-		json: {},
-		qs: {
-			lng: lng,
-			lat: lat,
-			maxDistance: 300
-		}
 	};
+
 	request(requestOptions, function(err, response, body){
-		console.log("responseBody" + body);
-		var i, data;
-		data = body;
-		if (response.statusCode === 200 && data.length) {
-			for (i = 0; i < data.length; i++){
-			data[i].distance = DistanceFormat(data[i].distance);
-			}
-		}
-		if (data === body) {
-			console.log("These two vars are equal.");
+		if (err) {
+			console.log("err message:"+err);
 		} else {
-			console.log("These two vars are not equal.");
+			var results = JSON.parse(body);
+			console.log("No err existed");
+			console.log("location data:" + results);
+			renderLocationList(req, res, results);
 		}
-		renderLocationList(req, res, data);
 	});
+
+	// path = '/api/locations';
+	// requestOptions = {
+	// 	url: apiChoosing.server + path,
+	// 	method: "GET",
+	// 	json: {},
+	// 	qs: {
+	// 		lng: lng,
+	// 		lat: lat,
+	// 		maxDistance: 300
+	// 	}
+	// };
+	// request(requestOptions, function(err, response, body){
+	// 	console.log("responseBody" + body);
+	// 	var i, data;
+	// 	data = body;
+	// 	if (response.statusCode === 200 && data.length) {
+	// 		for (i = 0; i < data.length; i++){
+	// 		data[i].distance = DistanceFormat(data[i].distance);
+	// 		}
+	// 	}
+	// 	if (data === body) {
+	// 		console.log("These two vars are equal.");
+	// 	} else {
+	// 		console.log("These two vars are not equal.");
+	// 	}
+	// 	renderLocationList(req, res, data);
+	// });
 };
 // function to format the distance
 var DistanceFormat = function(distance){
