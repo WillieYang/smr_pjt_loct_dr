@@ -45,6 +45,39 @@ var renderLocationList = function(req, res, responseBody){
 // 	res.render('locations_list');
 // };
 
+// function to format the distance
+var DistanceFormat = function(distance){
+	var dis;
+	if (distance < 1){
+		var dis = distance * 1000;
+		dis = dis.toFixed(0);
+		return dis + "m";
+	} else {
+		var dis = distance.toFixed(2);
+		return dis + "km";
+	}
+};
+
+// function to calculate distance 
+var deg2rad = function(deg){
+	return deg * (Math.PI/180)
+};
+
+var getDistance = function(lat1, lng1, lat2, lng2){
+	var R = 6371; // Radius of the earth in km
+  	var dLat = deg2rad(lat2-lat1);  // deg2rad below
+  	var dLon = deg2rad(lng2-lng1); 
+  	var a = 
+	    Math.sin(dLat/2) * Math.sin(dLat/2) +
+	    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+	    Math.sin(dLon/2) * Math.sin(dLon/2)
+	    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  return d;
+};
+
+
 // Get: Location List
 module.exports.locationList = function(req, res){
 	console.log("Passed Latitude:" + req.body.Latitude);
@@ -55,7 +88,7 @@ module.exports.locationList = function(req, res){
 
 	APIKey = 'AIzaSyCh44nqumpJ45eYdA5q7PuWkXFt6sF82KY';
 	placeAPI = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'; 
-	url = placeAPI + 'location=' + lat +', ' + lng + '&radius=50' + '&key=' + APIKey;
+	url = placeAPI + 'location=' + lat +', ' + lng + '&radius=500' + '&type=restaurant' + '&key=' + APIKey;
 
 	requestOptions = {
 		url: url,
@@ -73,14 +106,25 @@ module.exports.locationList = function(req, res){
 			console.log("location" + location);
 			for (var i =0; i< location.length; i++){
 				console.log("Name:"+location[i].name);
+				console.log("Rating:"+location[i].rating);
 				console.log('lat:' + location[i].geometry.location.lat);
 				console.log('lng:' + location[i].geometry.location.lng);
 				console.log('address:' + location[i].vicinity);
 				console.log('facilities:' + location[i].types);
 				console.log('place_id:' + location[i].place_id);
+				var lat1 = lat;
+				var lng1 = lng;
+				console.log("get the current location:" + lat1);
+				var lat2 = location[i].geometry.location.lat;
+				var lng2 = location[i].geometry.location.lng;
+				var dis = getDistance(lat1, lng1, lat2, lng2);
+				dis = DistanceFormat(dis);
+
 				results.push({name: location[i].name,
+							  rating: location[i].rating,
 							  lat: location[i].geometry.location.lat,
 							  lng: location[i].geometry.location.lng,
+							  distance: dis,
 							  address: location[i].vicinity,
 							  facilities: location[i].types,
 							  place_id: location[i].place_id});
@@ -92,6 +136,7 @@ module.exports.locationList = function(req, res){
 			console.log("results_name:" + JSON.stringify(results));
 			console.log("No err existed");
 			console.log("location data:" + body);
+			console.log("Distance between two place:" + getDistance(50.9383210, -1.3912900, 50.9438105, -1.4036067));
 			renderLocationList(req, res, results);
 		}
 	});
@@ -124,11 +169,7 @@ module.exports.locationList = function(req, res){
 	// 	renderLocationList(req, res, data);
 	// });
 };
-// function to format the distance
-var DistanceFormat = function(distance){
-	var formatDistance = distance.toFixed(0);
-	return formatDistance + "m";
-};
+
 
 /* Get 'location infomation' page. */
 // render function to get the detailed page
