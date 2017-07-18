@@ -21,6 +21,7 @@ var renderLocationList = function(req, res, responseBody){
 	// 	results.push(responseBody.results[i]);
 	// }
 	// console.log("results:"+results);
+	// var responseBody = [];
 
 	if (!(responseBody instanceof Array)) {
 		errorMessage = "API fetching error";
@@ -78,8 +79,12 @@ module.exports.locationList = function(req, res){
 				console.log('facilities:' + location[i].types);
 				console.log('place_id:' + location[i].place_id);
 				results.push({name: location[i].name});
+				console.log("get data from location:"+ results.name);
 			}
-			console.log("results_name:" + results);
+			for (var i = 0; i< results.length; i++){
+				console.log("get data from location:"+ results.name);	
+			}
+			console.log("results_name:" + JSON.stringify(results));
 			console.log("No err existed");
 			console.log("location data:" + body);
 			renderLocationList(req, res, body);
