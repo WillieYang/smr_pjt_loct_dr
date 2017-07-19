@@ -207,12 +207,13 @@ var showError = function(req,res, statusCode){
 // function to get location information
 var getLocationInfo = function(req, res, callback){
 	
-	var location = req.query.location;
-	console.log("Check the type of location:" + (typeof location));
-	console.log("get the query location:"+ location.length);
-	console.log("location type: " + JSON.stringify(location));
+	// var location = req.query.location;
+	// console.log("Check the type of location:" + (typeof location));
+	// console.log("get the query location:"+ location.length);
+	// console.log("location type: " + JSON.stringify(location));
 	
-	console.log("name:" + location.name);
+	console.log("name:" + req.query.name);
+	console.log("rating:" + req.query.rating);
 	var requestOptions, path;
 	path = '/api/locations/' + req.params.locationid;
 	console.log("location id:" + req.params.locationid);
