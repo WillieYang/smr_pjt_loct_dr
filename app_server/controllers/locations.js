@@ -112,6 +112,17 @@ module.exports.locationList = function(req, res){
 				console.log('address:' + location[i].vicinity);
 				console.log('facilities:' + location[i].types);
 				console.log('place_id:' + location[i].place_id);
+				// if (typeof (location[i].opening_hours.open_now) === 'undefined'){
+				// 	var open_or_not = [];
+				// } else {
+				// 	var open_or_not = location[i].opening_hours.open_now;
+				// }
+				try{
+					var open_or_not = location[i].opening_hours.open_now;	
+				}catch(e){
+					var open_or_not = [];
+				}
+				console.log('open_now:' + open_or_not);
 				var lat1 = lat;
 				var lng1 = lng;
 				console.log("get the current location:" + lat1);
@@ -127,6 +138,7 @@ module.exports.locationList = function(req, res){
 							  distance: dis,
 							  address: location[i].vicinity,
 							  facilities: location[i].types,
+							  openingTimes: open_or_not,
 							  place_id: location[i].place_id});
 				console.log("get data from location:"+ results.name);
 			}
@@ -211,19 +223,50 @@ var getLocationInfo = function(req, res, callback){
 	// console.log("Check the type of location:" + (typeof location));
 	// console.log("get the query location:"+ location.length);
 	// console.log("location type: " + JSON.stringify(location));
-	
+	var name = req.query.name;
+	var rating = req.query.rating;
+	var address = req.query.address;
+	var facilities = req.query.facilities;
+	var openingTimes = req.query.openingTimes;
+	var lat = req.query.lat;
+	var lng = req.query.lng;
+	var place_id = req.params.locationid;
+
+	console.log("openingTimes:" + req.query.openingTimes);
 	console.log("name:" + req.query.name);
 	console.log("rating:" + req.query.rating);
-	var requestOptions, path;
-	path = '/api/locations/' + req.params.locationid;
+	console.log("facilities:" + req.query.facilities);
+	console.log("address:" + req.query.address);
+	console.log("lat:" + req.query.lat);
+	console.log("lng:" + req.query.lng);
+
+	var passData = {
+		name: name,
+		rating: rating,
+		address: address,
+		facilities: facilities,
+		openingTimes: openingTimes,
+		lat: lat,
+		lng: lng,
+		place_id: place_id
+	};
+
+	var requestOptions_get, path, requestOptions_post;
+	path_get = '/api/locations/' + req.params.locationid;
+	path_post = '/api/locations/';
 	console.log("location id:" + req.params.locationid);
-	console.log("path:" + path);
-	requestOptions = {
-		url: apiChoosing.server + path,
+
+	requestOptions_get = {
+		url: apiChoosing.server + path_get,
 		method: "GET",
 		json: {},
 	};
-	request(requestOptions, function(err, response, body){
+	requestOptions_post = {
+		url: apiChoosing.server + path_post,
+		method: "POST",
+		json: passData
+	};
+	request(requestOptions_get, function(err, response, body){
 		var data = body;
 		if (response.statusCode === 200) {
 			console.log("lng:" + body.coords[0]);
@@ -233,7 +276,18 @@ var getLocationInfo = function(req, res, callback){
 			};
 			callback(req, res, data);	
 		} else {
-			showError(req, res, response.statusCode);
+			// showError(req, res, response.statusCode);
+			request(requestOptions_post, function(err_post, response_post, body_post){
+				console.log("This step all right or not?");
+				if (response_post.statusCode === 201) {
+					console.log("This step all right or not v2?");
+					callback(req, res, body_post);
+				}
+			});
+
+
+
+
 		}
 		
 	});	

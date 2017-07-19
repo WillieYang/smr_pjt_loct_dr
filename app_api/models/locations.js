@@ -2,12 +2,12 @@
 var mongoose = require('mongoose');
 
 // Schema for Opening Time (Nested Schema of locationSchema)
-var openingTimeSchema = new mongoose.Schema({
-	days: {type: String, required: true},
-	opening: String,
-	closing: String,
-	closed: {type: Boolean, required: true}
-});
+// var openingTimeSchema = new mongoose.Schema({
+// 	days: {type: String, required: true},
+// 	opening: String,
+// 	closing: String,
+// 	closed: {type: Boolean, required: true}
+// });
 
 // Schema for Reviews (Nested Schema of locationSchma)
 var reviewSchema = new mongoose.Schema({
@@ -24,8 +24,9 @@ var locationSchema = new mongoose.Schema({
 	rating: {type: Number, "default": 0, min: 0, max: 5},
 	facilities: [String],
 	coords: {type: [Number], index: '2dsphere', required: true},
-	openingTimes: [openingTimeSchema],
-	reviews: [reviewSchema]
+	openingTimes: String,
+	reviews: [reviewSchema],
+	place_id : String
 });
 
 // Compiling the Schema into Model
