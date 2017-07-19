@@ -17,7 +17,7 @@ block content
       each location in locations
         .col-xs-12.col-lg-12.list-group-item.list-group-item-action.active
           h4.list-group-item-heading
-            a(href="/location/#{location._id}" class="text-warning")= location.name
+            a(href="/location/#{location.place_id}?name=#{location.name}?rating=#{location.rating}?address=#{location.address}" class="text-warning")= location.name
             | &nbsp;
             small
               +outputRating(location.rating)
