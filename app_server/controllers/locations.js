@@ -274,6 +274,8 @@ var getLocationInfo = function(req, res, callback){
 				lng: body.coords[0],
 				lat: body.coords[1]
 			};
+			// update the status about whether the locaiton is open or not. 
+			data.openingTimes = openingTimes;
 			callback(req, res, data);	
 		} else {
 			// showError(req, res, response.statusCode);
