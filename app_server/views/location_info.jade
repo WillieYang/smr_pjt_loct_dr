@@ -11,20 +11,19 @@ block content
       .col-xs-12.col-md-9
           .row
               .col-xs-12.col-sm-12.col-lg-6
-                p.rating.sideword
+                h5.rating.sideword
                   +outputRating(location.rating)
                 p.h6.list-group-item-text.sideword= location.address
                 .card.card-inverse.card-primary
                   .card-header
                     h4.card-title.text-warning Opening hours
                   .card-block.bg.sideword
-                    each time in location.openingTimes
-                      p
-                        | #{time.days} :
-                        if time.closed
-                          | closed
-                        else
-                          | #{time.opening} - #{time.closing}
+                    if location.openingTimes == "true"
+                      h6 This location is now available for customers.
+                    if location.openingTimes == "false"
+                      h6 This location is now not available for customers.
+                    if location.openingTimes == "notSure"
+                      h6 Information about this location is uncertain.
                 .card.card-primary
                   .card-header
                     h4.card-title.text-warning Facilities

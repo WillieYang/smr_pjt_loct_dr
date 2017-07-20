@@ -120,7 +120,7 @@ module.exports.locationList = function(req, res){
 				try{
 					var open_or_not = location[i].opening_hours.open_now;	
 				}catch(e){
-					var open_or_not = [];
+					var open_or_not = 'notSure';
 				}
 				console.log('open_now:' + open_or_not);
 				var lat1 = lat;
@@ -284,10 +284,6 @@ var getLocationInfo = function(req, res, callback){
 					callback(req, res, body_post);
 				}
 			});
-
-
-
-
 		}
 		
 	});	

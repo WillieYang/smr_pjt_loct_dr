@@ -40,7 +40,8 @@ module.exports.locationsCreate = function(req, res){
 		facilities: req.body.facilities.split(","),
 		place_id: req.body.place_id,
 		coords: [parseFloat(req.body.lng), parseFloat(req.body.lat)],
-		openingTimes: req.body.openingTimes
+		openingTimes: req.body.openingTimes,
+		rating: req.body.rating
 	}, function(err, location){
 		if (err) {
 			sendJsonResponse(res, 404, err);
