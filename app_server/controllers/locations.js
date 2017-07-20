@@ -22,6 +22,11 @@ var renderLocationList = function(req, res, responseBody){
 	// }
 	// console.log("results:"+results);
 	// var responseBody = [];
+	console.log("responseBody:" + responseBody);
+
+	for (var i =0; i < responseBody.length; i++){
+		console.log("name in responseBody:" + responseBody[i].name);
+	}
 
 	if (!(responseBody instanceof Array)) {
 		errorMessage = "API fetching error";

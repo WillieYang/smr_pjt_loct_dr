@@ -2,5 +2,16 @@ extends layout
 
 block content
   .row.page-header
-    .col-md-6.col-sm-12
-      h1.text-warning= title
+    .col-lg-12
+      br
+      h2.text-warning.sansserif.text-center= title
+  .row
+    .col-xs-12.col-md-6.mx-auto.col-lg-12
+      .card.card-outline-primary.bg_y
+        each item in items
+          .col-xs-12.col-lg-12.list-group-item.list-group-item-action.active.bg_y
+            h6.list-group-item-heading
+              a(href="#{item.link}" class="text-warning")= item.title
+              br
+              p.times-roman
+               a(href="#{item.link}" class="text-warning")= item.link

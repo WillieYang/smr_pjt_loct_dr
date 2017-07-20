@@ -3,9 +3,22 @@ var request = require('request');
 
 var renderSearchResults = function(req, res, responseBody){
 	console.log("responseBody:" + responseBody);
-	
+	console.log("responseBody length:" + responseBody.length);
+	for (var i =0; i < responseBody.length; i++){
+		console.log("name in responseBody:" + responseBody[i].title);
+	}
+
+	if (!(responseBody instanceof Array)) {
+		errorMessage = "API fetching error";
+		responseBody = [];
+	}
+
 	res.render('search_results', {
-		title: "Google search results"
+		title: "Search Results",
+		pageHeader: {
+			title: 'Find places to work near you!'
+		},
+		items: responseBody,
 	});
 };
 
@@ -31,6 +44,7 @@ module.exports.searchResults = function(req, res){
 			console.log("err message:"+err);
 		} else {
 			var results = [];
+			console.log("body before item:" + body);
 			var body = JSON.parse(body);
 			var items = body.items;
 			console.log("items:" + items);

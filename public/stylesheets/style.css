@@ -71,6 +71,14 @@ hr { background-color: purple;
      border: 0; 
 }
 
+.times-roman {
+    font-family: "Times New Roman", Times, serif;
+}
+
+.sansserif {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 #map {
   height: 100%;
 }
