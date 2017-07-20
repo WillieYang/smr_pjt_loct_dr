@@ -140,10 +140,6 @@ module.exports.locationList = function(req, res){
 							  facilities: location[i].types,
 							  openingTimes: open_or_not,
 							  place_id: location[i].place_id});
-				console.log("get data from location:"+ results.name);
-			}
-			for (var i = 0; i< results.length; i++){
-				console.log("get data from location:"+ results.name);	
 			}
 			console.log("results_name:" + JSON.stringify(results));
 			console.log("No err existed");

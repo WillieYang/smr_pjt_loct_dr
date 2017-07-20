@@ -1,7 +1,9 @@
 // import the request module into this file
 var request = require('request');
 
-var renderSearchResults = function(req, res, data){
+var renderSearchResults = function(req, res, responseBody){
+	console.log("responseBody:" + responseBody);
+	
 	res.render('search_results', {
 		title: "Google search results"
 	});
@@ -28,10 +30,23 @@ module.exports.searchResults = function(req, res){
 		if (err) {
 			console.log("err message:"+err);
 		} else {
-			var data = body;
+			var results = [];
+			var body = JSON.parse(body);
+			var items = body.items;
+			console.log("items:" + items);
 			console.log("No err existed");
-			console.log("searched data:" + data);
-			renderSearchResults(req, res, data);
+			console.log("searched data:" + body);
+			for (var i = 0; i < items.length; i++){
+				console.log("title:" + items[i].title);
+				console.log("link:" + items[i].link);
+				results.push({
+					title: items[i].title,
+					link: items[i].link});
+			}
+			console.log("search_results:" + JSON.stringify(results));
+
+
+			renderSearchResults(req, res, results);
 		}
 	});
 };
