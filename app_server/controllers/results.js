@@ -14,7 +14,7 @@ module.exports.searchResults = function(req, res){
 
 	var APIKey = 'AIzaSyD-gjo3VFiW6AXpPtZ7zLoY-VaoGUZgAuQ';
 	var cx = '004898931646717710217:u1yfik5cc5a';
-	var query = req.body.search;
+	var query = req.body.query;
 	console.log("query:" + query);
 	searchAPI = 'https://www.googleapis.com/customsearch/v1';
 	url = searchAPI + '?key=' + APIKey + '&cx=' + cx + '&q=' + query;
