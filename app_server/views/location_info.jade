@@ -44,7 +44,7 @@ block content
             .col-xs-12.col-lg-12
               .card.card-primary
                 .card-header
-                  a.btn.btn-warning.float-right(href="/location/#{location._id}/reviews/new") Add review
+                  a.btn.btn-warning.float-right(href="/location/#{location.place_id}/reviews/new") Add review
                   h4.card-title.text-warning Customer reviews
                 .card-block.review-container
                   each review in location.reviews
