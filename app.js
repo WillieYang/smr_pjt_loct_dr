@@ -43,7 +43,11 @@ app.use('/users', users);
 // Configuring Passport
 var passport = require('passport');
 var expressSession = require('express-session');
-app.use(expressSession({secret: 'mySecretKey'}));
+app.use(expressSession({
+	secret: 'mySecretKey',
+	resave: true,
+    saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
