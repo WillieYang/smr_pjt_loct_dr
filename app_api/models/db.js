@@ -75,3 +75,4 @@ process.on('SIGTERM', function () {
 });
 // Require the locations.js model (location schema)
 require('./locations');
+require('./users');
