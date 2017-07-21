@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var expressSession = require('express-session');
 require('./app_api/models/db');
 
 // tell application to include the routes in app_server.
@@ -35,7 +37,15 @@ app.use('/', routes);
 // set the routes(index) in app_api
 app.use('/api', routesApi);
 
+// set the routes(users) in app_server
 app.use('/users', users);
+
+// Configuring Passport
+var passport = require('passport');
+var expressSession = require('express-session');
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
