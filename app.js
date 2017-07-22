@@ -4,8 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+// User Authentication
 var passport = require('passport');
 var expressSession = require('express-session');
+var flash = require('connect-flash');
 require('./app_api/models/db');
 
 // tell application to include the routes in app_server.
@@ -41,8 +43,6 @@ app.use('/api', routesApi);
 app.use('/users', users);
 
 // Configuring Passport
-var passport = require('passport');
-var expressSession = require('express-session');
 app.use(expressSession({
 	secret: 'mySecretKey',
 	resave: true,
@@ -50,6 +50,9 @@ app.use(expressSession({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+// using flash middleware provided by connect-flash to store message in session.
+app.use(flash());
 
 // Serializing and Deserializing User Instances
 passport.serializeUser(function(user, done) {
