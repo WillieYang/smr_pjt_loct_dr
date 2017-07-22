@@ -12,7 +12,6 @@ require('./app_api/models/db');
 
 // tell application to include the routes in app_server.
 var routes = require('./app_server/routes/index');
-var users = require('./app_server/routes/users');
 
 // tell application to include the routes in app_server.
 var routesApi = require('./app_api/routes/index');
@@ -39,9 +38,6 @@ app.use('/', routes);
 // set the routes(index) in app_api
 app.use('/api', routesApi);
 
-// set the routes(users) in app_server
-app.use('/users', users);
-
 // Configuring Passport
 app.use(expressSession({
 	secret: 'mySecretKey',
@@ -54,16 +50,13 @@ app.use(passport.session());
 // using flash middleware provided by connect-flash to store message in session.
 app.use(flash());
 
-// Serializing and Deserializing User Instances
-passport.serializeUser(function(user, done) {
-  done(null, user._id);
-});
- 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
+// initialize passport
+var initPassport = require('./app_api/models/passport/init');
+initPassport(passport);
+
+// set the routes(users) in app_server
+var users = require('./app_server/routes/users')(passport);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
