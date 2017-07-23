@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  .row.page-header
+    .col-lg-12
+      br
+      h1.text-warning.size.text-center.italic= pageHeader.title
+  .row
+    .col-xs-12.col-md-6.mx-auto
+      .card.card-outline-primary.bg_y
+        form(action="/users/signup", method="post", role="form", name="signup")
+          .form-group.card-block
+            label.col-xs-10.col-sm-2.text-primary.form-control-label(for="username") Username 
+            .col-xs-12.col-sm-10
+              input(type='text', name='username', class='form-control', placeholder='Username',required, autofocus)
+          .form-group.card-block
+            label.col-xs-10.col-sm-2.text-primary.form-control-label(for="email") Email 
+            .col-xs-12.col-sm-10
+              input(type='email', name='email', class='form-control', placeholder='Email',required)
+          .form-group.card-block
+            label.col-xs-10.col-sm-2.text-primary.form-control-label(for="password") Password 
+            .col-xs-12.col-sm-10
+              input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
+          .card.bg_y
+            button.btn.btn-warning.float-right Submit
+        .col-xs-12.col-md-4
+      #message
+        if message
+          h1.text-center #{message}

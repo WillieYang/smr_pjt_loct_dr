@@ -32,6 +32,10 @@ html body{
 	color: black;
 }
 
+.size{
+    font-size:5em;
+}
+
 .bg {
 	background-color: black;
 }
@@ -58,6 +62,10 @@ html body{
 
 .reviewTimestamp {
     color: #ccc;
+}
+
+.italic {
+    font-style: italic;
 }
 
 h1 { color: #7c795d; 

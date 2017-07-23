@@ -16,7 +16,12 @@ module.exports = function(passport){
 	/* GET login page. */
 	router.get('/login', function(req, res) {
     	// Display the Login page with any flash message, if any
-		res.render('login', { message: req.flash('message') });
+		res.render('login', { 
+			message: req.flash('message'),
+			pageHeader: {
+			title: 'Sign In'
+			}
+		});
 	});
 
 	/* Handle Login POST */
@@ -28,7 +33,12 @@ module.exports = function(passport){
 
 	/* GET Registration Page */
 	router.get('/signup', function(req, res){
-		res.render('register',{message: req.flash('message')});
+		res.render('register',{
+			message: req.flash('message'),
+			pageHeader: {
+			title: 'Sign Up'
+			}
+		});
 	});
 
 	/* Handle Registration POST */
