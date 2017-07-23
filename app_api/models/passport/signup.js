@@ -1,7 +1,8 @@
+var mongoose = require('mongoose');
 // load all the things we need about local strategy.
 var LocalStrategy   = require('passport-local').Strategy;
 // load up the user model
-var User = require('../users');
+var User = mongoose.model('User');
 // load up the bcrypt to generate the hash
 var bCrypt = require('bcrypt-nodejs');
 

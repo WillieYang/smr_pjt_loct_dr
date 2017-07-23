@@ -26,10 +26,11 @@ module.exports = function(passport){
 
 	/* Handle Login POST */
 	router.post('/login', passport.authenticate('login', {
-		successRedirect: '/',
-		failureRedirect: '/login',
+		failureRedirect: '/users/login/',
 		failureFlash : true  
-	}));
+	}), function(req, res){
+		res.redirect('/users/');
+	});
 
 	/* GET Registration Page */
 	router.get('/signup', function(req, res){
@@ -43,20 +44,23 @@ module.exports = function(passport){
 
 	/* Handle Registration POST */
 	router.post('/signup', passport.authenticate('signup', {
-		successRedirect: '/login',
-		failureRedirect: '/signup',
+		successRedirect: '/users/login/',
+		failureRedirect: '/users/signup/',
 		failureFlash : true  
 	}));
 
 	/* GET Home Page */
-	router.get('/home', isAuthenticated, function(req, res){
-		res.render('home', { user: req.user });
+	router.get('/', isAuthenticated, function(req, res){
+		console.log("username:"+req.user.username);
+		res.render('index', { 
+			user: req.user.username, 
+			title: 'Find what you like!'});
 	});
 
 	/* Handle Logout */
 	router.get('/logout', function(req, res) {
 		req.logout();
-		res.redirect('/');
+		res.redirect('/users/');
 	});
 
 	return router;
