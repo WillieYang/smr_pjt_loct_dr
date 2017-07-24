@@ -10,18 +10,18 @@ block content
       .card.card-outline-primary.bg_y
         form(action="/users/login/", method="post", role="form", name="signup")
           .form-group.card-block
-            label.col-xs-10.col-sm-2.text-primary.form-control-label(for="email") Email 
+            label.col-xs-10.col-sm-2.text-primary.size_label.form-control-label(for="email") Email 
             .col-xs-12.col-sm-10
-              input(type='email', name='email', class='form-control', placeholder='Email',required)
+              input(type='email', name='email', class='form-control', placeholder='someone@example.com',required)
           .form-group.card-block
-            label.col-xs-10.col-sm-2.text-primary.form-control-label(for="password") Password 
+            label.col-xs-10.col-sm-2.text-primary.size_label.form-control-label(for="password") Password 
             .col-xs-12.col-sm-10
-              input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
+              input(type='password', name='password', class='form-control nomargin', placeholder='Create password', required)
           .card.card-outline-warning.bg_y
             button.btn.btn-warning.float-right Submit
         .col-xs-12.col-md-4
       br
-      h6.text-warning Not a Member? &nbsp&nbsp&nbsp&nbsp
+      h6.sideword Not a Member? &nbsp&nbsp&nbsp&nbsp
         a(href='/users/signup/', class='text-center new-account').text-warning Create an account
       #message
         if message

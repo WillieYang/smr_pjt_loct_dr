@@ -6,6 +6,7 @@ module.exports.homepage = function(req, res){
 /* Get 'about' page. */
 module.exports.about = function(req, res){
 	res.render('about', {
+		user: req.user.username,
 		title: 'About',
 		content: 'This is a recommendation website created which is used to provide \
 			users some nearby appropriate restaurants or shops.\n\n In fact, this web\

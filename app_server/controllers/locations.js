@@ -37,6 +37,7 @@ var renderLocationList = function(req, res, responseBody){
 		}
 	}
 	res.render('locations_list', {
+		user: req.user.username,
 		title: 'Find places to work near you!',
 		pageHeader: {
 			title: 'Find places to work near you!'
@@ -189,15 +190,16 @@ module.exports.locationList = function(req, res){
 var renderDetailPage = function(req, res, locationInfo){
 		console.log("name:" + locationInfo.name);
 		res.render('location_info', {
-		title: locationInfo.name,
-		pageHeader: {
-			title: locationInfo.name
-		},
-		sidebar: {
-			context: 'provide accessible wifi and space to help you sit down with laptop and get work done.',
-			callToAction: "If you've been and you like it - or if you don't - please leave a review to help other people just like you."
-		},
-		location: locationInfo
+			user: req.user.username,
+			title: locationInfo.name,
+			pageHeader: {
+				title: locationInfo.name
+			},
+			sidebar: {
+				context: 'provide accessible wifi and space to help you sit down with laptop and get work done.',
+				callToAction: "If you've been and you like it - or if you don't - please leave a review to help other people just like you."
+			},
+			location: locationInfo
 	})	
 };
 
@@ -301,6 +303,7 @@ module.exports.locationInfo = function(req, res){
 // render the addReview page
 var renderReviewForm = function(req, res, locationInfo){
 	res.render('location_review_form', {
+		user: req.user.username,
 		title: locationInfo.name,
 		pageHeader: {title: locationInfo.name},
 		location: locationInfo,
@@ -322,7 +325,7 @@ module.exports.addReview_post = function(req, res){
 	console.log("location id of addReview: " + locationid);
 	path = '/api/locations/' + locationid + '/reviews/';
 	postdata = {
-		author: req.body.name,
+		author: req.user.username,
 		rating: parseInt(req.body.rating, 10),
 		reviewText: req.body.review
 	};

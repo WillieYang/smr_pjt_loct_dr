@@ -15,16 +15,15 @@ html
       div(class="navbar-collapse collapse show", id="navbarColor01", aria-expanded="true")
         ul(class="navbar-nav mr-auto")
           if user
-            li(class="nav-item active")
-              a(class="nav-link text-warning", href="/users/") Home #[span(class="sr-only") (current)]
-            li(class="nav-item").text-warning #{user}
+            li(class="nav-item")
+              a(class="nav-link text-warning", href="/users/") Hello #{user}
             li(class="nav-item")
               a(class="nav-link text-warning", href="/users/logout/") Logout
             li(class="nav-item")
               a(class="nav-link text-warning", href="/about/") About
           else
             li(class="nav-item active")
-              a(class="nav-link text-warning", href="/users/") Home #[span(class="sr-only") (current)]
+              a(class="nav-link text-warning", href="/users/") Home
             li(class="nav-item")
               a(class="nav-link text-warning", href="/users/login/") Sign In
             li(class="nav-item")

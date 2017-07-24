@@ -14,6 +14,7 @@ var renderSearchResults = function(req, res, responseBody){
 	}
 
 	res.render('search_results', {
+		user: req.user.username,
 		title: "Search Results",
 		pageHeader: {
 			title: 'Find places to work near you!'

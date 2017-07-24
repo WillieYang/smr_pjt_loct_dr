@@ -10,8 +10,6 @@ var expressSession = require('express-session');
 var flash = require('connect-flash');
 require('./app_api/models/db');
 
-// tell application to include the routes in app_server.
-var routes = require('./app_server/routes/index');
 
 // tell application to include the routes in app_server.
 var routesApi = require('./app_api/routes/index');
@@ -31,9 +29,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// set the routes(index) in app_server
-app.use('/', routes);
 
 // set the routes(index) in app_api
 app.use('/api', routesApi);
@@ -57,6 +52,11 @@ initPassport(passport);
 // set the routes(users) in app_server
 var users = require('./app_server/routes/users')(passport);
 app.use('/users', users);
+
+// tell application to include the routes in app_server.
+var routes = require('./app_server/routes/index')(passport);
+// set the routes(index) in app_server
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
