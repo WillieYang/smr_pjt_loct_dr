@@ -22,8 +22,10 @@ app.locals.env = process.env;
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// set the favicon in /public/images
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+
+// use body parser, cookie parser, and static directory 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
