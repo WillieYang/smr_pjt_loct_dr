@@ -68,6 +68,10 @@ html body{
     font-style: italic;
 }
 
+.text-red {
+    color: red;
+}
+
 h1 { color: #7c795d; 
      font-family: 'Signika', sans-serif; 
      font-weight: normal; 

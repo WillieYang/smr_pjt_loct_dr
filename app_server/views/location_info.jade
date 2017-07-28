@@ -4,9 +4,18 @@ include _includes/sharedHTMLfunctions
 
 block content
   .row.page-header
-      .col-lg-12
+      .col-lg-11
           h1.text-warning= pageHeader.title
             span.fa.fa-refresh.fa-spin.fa-1x.fa-fw
+      .col-lg-1
+        p
+         form(action="/users/#{userid}/lovedLocations/", method="post", role="form")
+           input(type="hidden", id="locationName", name='locationName', value="#{location.name}")
+           input(type="hidden", id="locationAddress", name='locationAddress', value="#{location.address}")
+           input(type="hidden", id="place_id", name='place_id', value="#{location.place_id}")
+           input(type="hidden", id="lat", name='lat', value="#{location.coords.lat}")
+           input(type="hidden", id="lng", name='lng', value="#{location.coords.lng}")
+           button.btn-warning.fa.fa-heart.text-red Love it
   .row
       .col-xs-12.col-md-9
           .row

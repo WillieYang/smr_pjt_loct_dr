@@ -195,8 +195,10 @@ module.exports.locationList = function(req, res){
 // render function to get the detailed page
 var renderDetailPage = function(req, res, locationInfo){
 		console.log("name:" + locationInfo.name);
+		console.log("user_id:" + req.user._id);
 		res.render('location_info', {
 			user: req.user.username,
+			userid: req.user._id,
 			title: locationInfo.name,
 			pageHeader: {
 				title: locationInfo.name
@@ -378,7 +380,7 @@ module.exports.lovedLocation_post = function(req, res){
 
     request(requestOptions, function(err, response, body){
 	  if (response.statusCode === 201) {
-		// res.redirect('/location/' + locationid);
+		res.redirect('/users/');
 		console.log("lovedLocations create successful");
     } else {
 	  showError(req, res, response.statusCode);
