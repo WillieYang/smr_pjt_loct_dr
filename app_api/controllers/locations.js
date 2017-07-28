@@ -123,7 +123,7 @@ module.exports.locationsReadOne = function(req, res){
 	  }
 	};
 
-// update the location information, reference key: _id
+// update the location information, reference key: place_id
 module.exports.locationsUpdateOne = function(req, res){
 	if (!req.params.locationid) {
 		sendJsonResponse(res, 404, {
@@ -132,7 +132,7 @@ module.exports.locationsUpdateOne = function(req, res){
 		return;
 	}
 	Location
-		.findById(req.params.locationid)
+		.findOne({'place_id': req.params.locationid})
 		.select('-reviews, -rating')
 		.exec(
 			function(err, location){

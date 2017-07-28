@@ -17,10 +17,10 @@ router.put('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsUpdate
 router.delete('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsDeleteOne);
 
 // user's loved location
-router.post('/users/:userid/lovedLocations', ctrlLocations.lovedLocationCreate);
-router.get('/users/:userid/lovedLocations/:lovedlocationid', ctrlLocations.lovedLocationCreate);
-router.delete('/users/:userid/lovedLocations/:lovedlocationid', ctrlLocations.lovedLocationDelete);
-router.put('/users/:userid/lovedLocations/:lovedlocationid', ctrlLocations.lovedLocationUpdate);
+// router.post('/users/:userid/lovedLocations', ctrlLocations.lovedLocationCreate);
+// router.get('/users/:userid/lovedLocations/:lovedlocationid', ctrlLocations.lovedLocationCreate);
+// router.delete('/users/:userid/lovedLocations/:lovedlocationid', ctrlLocations.lovedLocationDelete);
+// router.put('/users/:userid/lovedLocations/:lovedlocationid', ctrlLocations.lovedLocationUpdate);
 
 // export routes
 module.exports = router;
