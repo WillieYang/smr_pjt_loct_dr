@@ -112,7 +112,6 @@ module.exports.locationList = function(req, res){
 			console.log("location" + location);
 			for (var i =0; i< location.length; i++){
 				console.log("Name:"+location[i].name);
-				console.log("Rating:"+location[i].rating);
 				console.log('lat:' + location[i].geometry.location.lat);
 				console.log('lng:' + location[i].geometry.location.lng);
 				console.log('address:' + location[i].vicinity);
@@ -128,7 +127,14 @@ module.exports.locationList = function(req, res){
 				}catch(e){
 					var open_or_not = 'notSure';
 				}
+
+				var rating_number = location[i].rating;
+
+				if (rating_number === undefined){
+					var rating_number = 2
+				}
 				console.log('open_now:' + open_or_not);
+				console.log("Rating Number is what ?:" + rating_number);
 				var lat1 = lat;
 				var lng1 = lng;
 				console.log("get the current location:" + lat1);
@@ -138,7 +144,7 @@ module.exports.locationList = function(req, res){
 				dis = DistanceFormat(dis);
 
 				results.push({name: location[i].name,
-							  rating: location[i].rating,
+							  rating: rating_number,
 							  lat: location[i].geometry.location.lat,
 							  lng: location[i].geometry.location.lng,
 							  distance: dis,
