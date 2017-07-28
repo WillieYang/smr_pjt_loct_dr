@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var ctrlLocations = require('../controllers/locations');
 var ctrlReviews = require('../controllers/reviews');
+var ctrlUserLocation = require('../controllers/userLocation');
 
 // locations
 router.get('/locations', ctrlLocations.locationsListByDistance);
@@ -17,10 +18,10 @@ router.put('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsUpdate
 router.delete('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsDeleteOne);
 
 // user's loved location
-// router.post('/users/:userid/lovedLocations', ctrlLocations.lovedLocationCreate);
-// router.get('/users/:userid/lovedLocations/:lovedlocationid', ctrlLocations.lovedLocationCreate);
-// router.delete('/users/:userid/lovedLocations/:lovedlocationid', ctrlLocations.lovedLocationDelete);
-// router.put('/users/:userid/lovedLocations/:lovedlocationid', ctrlLocations.lovedLocationUpdate);
+router.post('/users/:userid/lovedLocations', ctrlUserLocation.lovedLocationCreate);
+// router.get('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationGet);
+// router.delete('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationDelete);
+// router.put('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationUpdate);
 
 // export routes
 module.exports = router;
