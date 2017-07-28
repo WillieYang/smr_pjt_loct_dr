@@ -53,3 +53,52 @@ var addUserLocation = function(req, res, user) {
 	   });
     }
 };
+
+// delete
+module.exports.lovedLocationDelete = function(req, res){
+	if (!req.params.userid || !req.params.lovedlocationid) {
+		sendJsonResponse(res, 404, {
+			"message": "Sorry, userid and lovedlocationid are both required"
+		});
+		return;
+	}
+	User
+		.findById(req.params.userid)
+		.select('userLocation')
+		.exec(
+			function(err, user){
+				console.log("user:" + user);
+	
+				if (!user) {
+					sendJsonResponse(res, 404, {
+						"message": "userid not found"
+					});
+					return;
+				} else if (err) {
+					sendJsonResponse(res, 400, err);
+					return;
+				}
+				if (user.userLocation && user.userLocation.length > 0) {
+					if (!user.userLocation.id(req.params.lovedlocationid)) {
+						sendJsonResponse(res, 404, {
+							"message": "lovedLocationid not found"
+						});
+					} else {
+						user.userLocation.id(req.params.lovedlocationid).remove();
+						user.save(function(err) {
+							if (err) {
+								sendJsonResponse(res, 404, err);
+							} else {
+								sendJsonResponse(res, 204, null);
+							}
+						});
+					}
+				} else {
+
+					sendJsonResponse(res, 404, {
+						"message": "No userLocation to remove"
+					});
+				}
+			}
+		);
+};

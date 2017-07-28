@@ -30,6 +30,8 @@ router.get('/', ctrlOthers.homepage);
 router.get('/about', isAuthenticated, ctrlOthers.about);
 /* Google search results page. */
 router.post('/results', isAuthenticated, ctrlResults.searchResults);
+// user's loved location page
+router.post('/users/:userid/lovedLocations', isAuthenticated, ctrlLocation.lovedLocation_post);
 
 return router;
 

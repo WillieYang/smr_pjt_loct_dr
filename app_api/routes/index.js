@@ -20,7 +20,7 @@ router.delete('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsDel
 // user's loved location
 router.post('/users/:userid/lovedLocations', ctrlUserLocation.lovedLocationCreate);
 // router.get('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationGet);
-// router.delete('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationDelete);
+router.delete('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationDelete);
 // router.put('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationUpdate);
 
 // export routes

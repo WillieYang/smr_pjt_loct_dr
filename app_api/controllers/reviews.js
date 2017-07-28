@@ -233,7 +233,6 @@ module.exports.reviewsDeleteOne = function(req, res){
 							if (err) {
 								sendJsonResponse(res, 404, err);
 							} else {
-								updateAverageRating(location._id);
 								sendJsonResponse(res, 204, null);
 							}
 						});

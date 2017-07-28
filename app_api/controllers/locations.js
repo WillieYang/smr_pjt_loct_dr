@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Location = mongoose.model('Location');
+var User = mongoose.model('Location');
 
 // function to return JSON data and status code.
 var sendJsonResponse = function(res, status, content){
@@ -32,7 +32,7 @@ module.exports.locationsCreate = function(req, res){
 	// console.log("openingTimes:" + req.body.opening1);
 	// console.log("closingTimes:" + req.body.closing1);
 	console.log("name: " + req.body.name);
-	console.log("adress: " + req.body.adress);
+	console.log("address: " + req.body.address);
 
 	Location.create({
 		name: req.body.name,

@@ -348,3 +348,34 @@ module.exports.addReview_post = function(req, res){
 		});
 	}
 };
+
+/* Post 'lovedLocationCreate' page. */
+
+module.exports.lovedLocation_post = function(req, res){
+	var requestOptions, path, userid, postdata;
+	userid = req.params.userid;
+	console.log("userid of lovedLocation: " + userid);
+	path = '/api/users/' + userid + '/lovedLocations/';
+	postdata = {
+		locationName: req.body.locationName,
+		locationAddress: req.body.locationAddress,
+		place_id: req.body.place_id,
+		lat: req.body.lat,
+		lng: req.body.lng
+	};
+
+	requestOptions = {
+		url: apiChoosing.server + path,
+		method: "POST",
+		json: postdata
+	};
+
+    request(requestOptions, function(err, response, body){
+	  if (response.statusCode === 201) {
+		// res.redirect('/location/' + locationid);
+		console.log("lovedLocations create successful");
+    } else {
+	  showError(req, res, response.statusCode);
+		}
+	});
+};

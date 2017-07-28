@@ -8,7 +8,6 @@ block content
     h1.display-3 #{title}
     p This is a location seeking and rating website.
     p
-      //- a(class="btn btn-primary btn-lg" href="/locationlist/") Start off Seeking
       form(action="/locationlist/", method="post", role="form", id="geolocation")
         input(type="hidden", id="Latitude", name='Latitude', value="")
         input(type="hidden", id="Longitude", name='Longitude', value="")
