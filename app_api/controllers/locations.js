@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var User = mongoose.model('Location');
+var Location = mongoose.model('Location');
 
 // function to return JSON data and status code.
 var sendJsonResponse = function(res, status, content){
