@@ -112,7 +112,7 @@ module.exports.lovedLocationGet = function(req, res){
 		return;
 	}
 	User
-		.findById(req.params.userid)
+		.find({"_id": req.params.userid, 'userLocation': {"$elemMatch": {'locationName': req.params.lovedLocationName}}},  {"userLocation.$": 1})
 		.exec(
 			function(err, lovedLocation){
 				console.log("lovedLocation:" + lovedLocation);
