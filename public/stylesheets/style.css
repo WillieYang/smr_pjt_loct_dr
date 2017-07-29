@@ -99,6 +99,9 @@ hr { background-color: purple;
   height: 100%;
 }
 
+.size_map {
+    min-height: 700px;
+}
 .footer {
    position:relative;
    bottom:0;

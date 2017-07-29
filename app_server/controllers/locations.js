@@ -410,7 +410,7 @@ module.exports.lovedLocation_post = function(req, res){
 var renderLovedLocation = function(req, res, responseBody){
 	console.log("lovedLocations:" + responseBody);
 	res.render('loved_location', {
-		title: "This is loved locaiton page",
+		title: "Your Loved Locations",
 		user: req.user.username,
 		lovedLocation: responseBody
 	});

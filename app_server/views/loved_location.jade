@@ -1,7 +1,18 @@
 extends layout
 
 block content
-  h1.text-warning= title
-  h5.text-warning
-   each location in lovedLocation
-    p #{location.locationName}
+  .row.page-header
+    .col-lg-12
+      br
+      h1.text-warning.text-center.italic= title
+  .row
+    .col-lg-12
+      h5.text-warning.text-center
+       each location in lovedLocation
+        p #{location.locationName}
+  .row
+    .col-lg-1
+    .col-xs-12.col-sm-4.col-lg-10 
+      #map.size_map
+    .col-lg-1
+    
