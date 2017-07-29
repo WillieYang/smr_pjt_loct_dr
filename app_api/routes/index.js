@@ -26,7 +26,7 @@ router.post('/users/:userid/lovedLocations', ctrlUserLocation.lovedLocationCreat
 router.get('/users/:userid/lovedLocations/:lovedLocationName', ctrlUserLocation.lovedLocationGet);
 
 // get a list of loved location for a specific user
-router.get('/users/:userid/lovedLocations/', ctrlUserLocation.lovedLocationListGet);
+router.get('/users/:userid/lovedLocations', ctrlUserLocation.lovedLocationListGet);
 
 router.delete('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationDelete);
 // router.put('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationUpdate);

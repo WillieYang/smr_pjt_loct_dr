@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1.text-warning= title
+  h5.text-warning
+   each location in lovedLocation
+    p #{location.locationName}
