@@ -102,3 +102,32 @@ module.exports.lovedLocationDelete = function(req, res){
 			}
 		);
 };
+
+// get a specific locaiton
+module.exports.lovedLocationGet = function(req, res){
+	if (!req.params.userid || !req.params.lovedLocationName) {
+		sendJsonResponse(res, 404, {
+			"message": "Sorry, userid and lovedlocationid are both required"
+		});
+		return;
+	}
+	User
+		.find({"_id": req.params.userid, 'userLocation': {"$elemMatch": {'locationName': req.params.lovedLocationName}}},  {"userLocation.$": 1})
+		.exec(
+			function(err, lovedLocation){
+				console.log("lovedLocation:" + lovedLocation);
+	
+				if (!lovedLocation) {
+					sendJsonResponse(res, 404, {
+						"message": "lovedLocation not found"
+					});
+					return;
+				} else if (err) {
+					sendJsonResponse(res, 400, err);
+					return;
+				}
+				sendJsonResponse(res, 200, lovedLocation);
+
+			}
+		);
+};
