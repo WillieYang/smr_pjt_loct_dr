@@ -112,7 +112,7 @@ module.exports.lovedLocationGet = function(req, res){
 		return;
 	}
 	User
-		.find({"_id": req.params.userid, 'userLocation': {"$elemMatch": {'locationName': req.params.lovedLocationName}}},  {"userLocation.$": 1})
+		.findById(req.params.userid)
 		.exec(
 			function(err, lovedLocation){
 				console.log("lovedLocation:" + lovedLocation);
@@ -129,4 +129,31 @@ module.exports.lovedLocationGet = function(req, res){
 				sendJsonResponse(res, 200, lovedLocation);
 			}
 		);
+};
+
+// get a list of loved locaiton from a specific user
+module.exports.lovedLocationListGet = function(req, res){
+	 if (req.params && req.params.userid) {
+	    User
+	      .findById(req.params.userid)
+	      .exec(function(err, user) {
+	        if (!user) {
+	          sendJsonResponse(res, 404, {
+	            "message": "userid not found"
+	          });
+			  return;
+	        } else if (err) {
+	          console.log(err);
+	          sendJsonResponse(res, 404, err);
+	          return;
+	        }
+	        console.log(user);
+	        sendJsonResponse(res, 200, user);
+	      });
+	  } else {
+	    console.log('No userid specified');
+	    sendJsonResponse(res, 404, {
+	      "message": "No userid in request"
+	    });
+	  }
 };

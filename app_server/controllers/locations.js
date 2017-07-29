@@ -404,3 +404,15 @@ module.exports.lovedLocation_post = function(req, res){
 		}
 	});
 };
+
+/* Get 'lovedLocation' page. */
+
+var renderLovedLocation = function(req, res, responseBody){
+	res.render('loved_location', {
+		
+	});
+};
+
+module.exports.lovedLocation_get = function(){
+	var requestOptions, path, userid;
+};

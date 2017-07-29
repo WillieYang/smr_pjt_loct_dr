@@ -18,9 +18,16 @@ router.put('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsUpdate
 router.delete('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsDeleteOne);
 
 // user's loved location
+
+// create a loved locaiton for a specific user.
 router.post('/users/:userid/lovedLocations', ctrlUserLocation.lovedLocationCreate);
-// get a specific locaiton
+
+// get a specific loved locaiton from a user
 router.get('/users/:userid/lovedLocations/:lovedLocationName', ctrlUserLocation.lovedLocationGet);
+
+// get a list of loved location for a specific user
+router.get('/users/:userid/lovedLocations/', ctrlUserLocation.lovedLocationListGet);
+
 router.delete('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationDelete);
 // router.put('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationUpdate);
 
