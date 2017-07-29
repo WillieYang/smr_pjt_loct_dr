@@ -103,7 +103,7 @@ module.exports.lovedLocationDelete = function(req, res){
 		);
 };
 
-// get a specific locaiton
+// get a specific locaiton by lovedLocationName
 module.exports.lovedLocationGet = function(req, res){
 	if (!req.params.userid || !req.params.lovedLocationName) {
 		sendJsonResponse(res, 404, {
@@ -117,7 +117,7 @@ module.exports.lovedLocationGet = function(req, res){
 			function(err, lovedLocation){
 				console.log("lovedLocation:" + lovedLocation);
 	
-				if (!lovedLocation) {
+				if (lovedLocation.length == 0) {
 					sendJsonResponse(res, 404, {
 						"message": "lovedLocation not found"
 					});
@@ -127,7 +127,6 @@ module.exports.lovedLocationGet = function(req, res){
 					return;
 				}
 				sendJsonResponse(res, 200, lovedLocation);
-
 			}
 		);
 };

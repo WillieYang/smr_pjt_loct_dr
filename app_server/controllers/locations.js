@@ -360,10 +360,14 @@ module.exports.addReview_post = function(req, res){
 /* Post 'lovedLocationCreate' page. */
 
 module.exports.lovedLocation_post = function(req, res){
-	var requestOptions, path, userid, postdata;
+	var requestOptions_post, path_post, userid, postdata;
+	var requestOptions_get, path_get;
 	userid = req.params.userid;
 	console.log("userid of lovedLocation: " + userid);
-	path = '/api/users/' + userid + '/lovedLocations/';
+
+	path_post = '/api/users/' + userid + '/lovedLocations/';
+	path_get = '/api/users/' + userid + '/lovedLocations/' + req.body.locationName;
+
 	postdata = {
 		locationName: req.body.locationName,
 		locationAddress: req.body.locationAddress,
@@ -372,18 +376,31 @@ module.exports.lovedLocation_post = function(req, res){
 		lng: req.body.lng
 	};
 
-	requestOptions = {
-		url: apiChoosing.server + path,
+	requestOptions_post = {
+		url: apiChoosing.server + path_post,
 		method: "POST",
 		json: postdata
 	};
 
-    request(requestOptions, function(err, response, body){
-	  if (response.statusCode === 201) {
-		res.redirect('/users/');
-		console.log("lovedLocations create successful");
-    } else {
-	  showError(req, res, response.statusCode);
+	requestOptions_get = {
+		url: apiChoosing.server + path_get,
+		method: "GET",
+		json: {},
+	};
+
+	request(requestOptions_get, function(err, response, body){
+	  if (response.statusCode === 200) {
+	  	res.redirect('/users/');
+		console.log("this location is added to the lovelist");
+		} else {
+			request(requestOptions_post, function(err, response_post, body_post){
+			  if (response_post.statusCode === 201) {
+				res.redirect('/users/');
+				console.log("lovedLocations create successful");
+		    } else {
+			  showError(req, res, response.statusCode);
+				}
+			});
 		}
 	});
 };
