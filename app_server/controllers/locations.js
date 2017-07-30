@@ -472,10 +472,11 @@ module.exports.lovedLocation_delete = function(req, res){
 module.exports.lovedLocation_route = function(req, res){
 	var lat = parseFloat(req.query.lat);
 	var lng = parseFloat(req.query.lng);
+	var locationName = req.query.locationName;
 	console.log("lat:" + lat);
 	console.log("lat:" + lng);
 	res.render('loved_location_route', {
-		title: "Route Page",
+		title: "Route to " + locationName,
 		user: req.user.username,
 		userid: req.params.userid,
 		lat: lat,

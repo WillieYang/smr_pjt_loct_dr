@@ -16,7 +16,7 @@ block content
           .col-lg-12 
             p Address: #{location.locationAddress}
             p
-              a(class="btn btn-primary btn-lg size-button float-right" href="/users/#{userid}/lovedLocations/route?lat=#{location.coords.lat}&lng=#{location.coords.lng}") Route 
+              a(class="btn btn-primary btn-lg size-button float-right" href="/users/#{userid}/lovedLocations/route?lat=#{location.coords.lat}&lng=#{location.coords.lng}&locationName=#{location.locationName}") Route 
               form(action="/users/#{userid}/lovedLocations/#{location._id}", method="post", role="form")
                 button.btn.btn-primary.btn-lg.size-button.float-right Delete
                 br
