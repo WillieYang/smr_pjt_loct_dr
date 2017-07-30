@@ -42,6 +42,8 @@ router.get('/users/:userid/lovedLocations', isAuthenticated, ctrlLocation.lovedL
 
 router.post('/users/:userid/lovedLocations/:lovedlocationid', isAuthenticated, ctrlLocation.lovedLocation_delete);
 
+router.get('/users/:userid/lovedLocations/route', isAuthenticated, ctrlLocation.lovedLocation_route);
+
 return router;
 
 }

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .row.page-header
+    .col-lg-12
+      br
+      h1.text-warning.text-center.italic= title
+  .row
+    .col-lg-1.col-xs-1.col-sm-1
+    .col-lg-10.col-xs-10.col-sm-10
+      script.
+        var targetlat = !{JSON.stringify(lat)};
+        var targetlng = !{JSON.stringify(lng)};
+      script(src='/javascripts/map_lovedLocation_route.js')
+      #map.size_map
+    .col-lg-1.col-xs-1.col-sm-1

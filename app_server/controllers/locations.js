@@ -466,3 +466,19 @@ module.exports.lovedLocation_delete = function(req, res){
 		}
 	});
 };
+
+/* Get the route between two markers 'lovedLocation' page. */
+
+module.exports.lovedLocation_route = function(req, res){
+	var lat = parseFloat(req.query.lat);
+	var lng = parseFloat(req.query.lng);
+	console.log("lat:" + lat);
+	console.log("lat:" + lng);
+	res.render('loved_location_route', {
+		title: "Route Page",
+		user: req.user.username,
+		userid: req.params.userid,
+		lat: lat,
+		lng: lng
+	});
+};

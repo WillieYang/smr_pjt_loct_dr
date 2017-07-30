@@ -16,7 +16,7 @@ block content
           .col-lg-12 
             p Address: #{location.locationAddress}
             p
-              a(class="btn btn-primary btn-lg size-button float-right" href="/users/login") Route 
+              a(class="btn btn-primary btn-lg size-button float-right" href="/users/#{userid}/lovedLocations/route?lat=#{location.coords.lat}&lng=#{location.coords.lng}") Route 
               form(action="/users/#{userid}/lovedLocations/#{location._id}", method="post", role="form")
                 button.btn.btn-primary.btn-lg.size-button.float-right Delete
                 br
@@ -24,7 +24,8 @@ block content
     .col-lg-2.col-xs-2.col-sm-2
   .row
     .col-lg-1.col-xs-1.col-sm-1
-    .col-lg-10.col-xs-10.col-sm-10 
+    .col-lg-10.col-xs-10.col-sm-10
+      script(src='/javascripts/map_current_location.js') 
       #map.size_map
     .col-lg-1.col-xs-1.col-sm-1
     
