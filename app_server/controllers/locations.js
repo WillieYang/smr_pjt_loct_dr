@@ -38,6 +38,7 @@ var renderLocationList = function(req, res, responseBody){
 	}
 	res.render('locations_list', {
 		user: req.user.username,
+		userid: req.user._id,
 		title: 'Find places to work near you!',
 		pageHeader: {
 			title: 'Find places to work near you!'
@@ -312,6 +313,7 @@ module.exports.locationInfo = function(req, res){
 var renderReviewForm = function(req, res, locationInfo){
 	res.render('location_review_form', {
 		user: req.user.username,
+		userid: req.user._id,
 		title: locationInfo.name,
 		pageHeader: {title: locationInfo.name},
 		location: locationInfo,

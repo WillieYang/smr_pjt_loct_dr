@@ -91,6 +91,12 @@ hr { background-color: purple;
     font-size: 1.5em;
 }
 
+.size-button {
+  font-size: 1.3em;
+  padding:5px;
+  margin: 13px;
+}
+
 .times-roman {
     font-family: "Times New Roman", Times, serif;
 }

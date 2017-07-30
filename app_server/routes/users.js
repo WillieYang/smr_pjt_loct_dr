@@ -53,7 +53,8 @@ module.exports = function(passport){
 	router.get('/', isAuthenticated, function(req, res){
 		console.log("username:"+req.user.username);
 		res.render('index', { 
-			user: req.user.username, 
+			user: req.user.username,
+			userid: req.user._id, 
 			title: 'Find what you like!'});
 	});
 

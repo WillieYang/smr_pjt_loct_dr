@@ -13,11 +13,14 @@ block content
         .card.card-outline-primary.bg_y
           .col-lg-4
             p Name: #{location.locationName}
-          .col-lg-8 
+          .col-lg-12 
             p Address: #{location.locationAddress}
             p
+              a(class="btn btn-primary btn-lg size-button float-right" href="/users/login") Route 
               form(action="/users/#{userid}/lovedLocations/#{location._id}", method="post", role="form")
-                button.btn.btn-primary.btn-lg Delete
+                button.btn.btn-primary.btn-lg.size-button.float-right Delete
+                br
+                br
     .col-lg-2.col-xs-2.col-sm-2
   .row
     .col-lg-1.col-xs-1.col-sm-1
