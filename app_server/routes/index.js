@@ -16,24 +16,31 @@ var isAuthenticated = function (req, res, next) {
 }
 
 module.exports = function(passport){
+
 /* Location page. */
 router.post('/locationlist', isAuthenticated, ctrlLocation.locationList);
-// router.post('/locationlistPost', ctrlLocation.locationListPost);
+
 router.get('/location/:locationid', isAuthenticated, ctrlLocation.locationInfo);
 
 router.get('/location/:locationid/reviews/new', isAuthenticated, ctrlLocation.addReview);
 
 router.post('/location/:locationid/reviews/new', isAuthenticated, ctrlLocation.addReview_post);
+
 /* Others page. */
 router.get('/', ctrlOthers.homepage);
 
 router.get('/about', isAuthenticated, ctrlOthers.about);
+
 /* Google search results page. */
 router.post('/results', isAuthenticated, ctrlResults.searchResults);
-// post user's loved location page
+
+/* User's loved location page */
+
 router.post('/users/:userid/lovedLocations', isAuthenticated, ctrlLocation.lovedLocation_post);
 
 router.get('/users/:userid/lovedLocations', isAuthenticated, ctrlLocation.lovedLocation_get);
+
+router.post('/users/:userid/lovedLocations/:lovedlocationid', isAuthenticated, ctrlLocation.lovedLocation_delete);
 
 return router;
 

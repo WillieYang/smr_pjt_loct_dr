@@ -6,13 +6,22 @@ block content
       br
       h1.text-warning.text-center.italic= title
   .row
-    .col-lg-12
-      h5.text-warning.text-center
+    .col-lg-2.col-xs-2.col-sm-2
+    .col-lg-8.col-xs-8.col-sm-8
+      p.text-primary.oblique
        each location in lovedLocation
-        p #{location.locationName}
+        .card.card-outline-primary.bg_y
+          .col-lg-4
+            p Name: #{location.locationName}
+          .col-lg-8 
+            p Address: #{location.locationAddress}
+            p
+              form(action="/users/#{userid}/lovedLocations/#{location._id}", method="post", role="form")
+                button.btn.btn-primary.btn-lg Delete
+    .col-lg-2.col-xs-2.col-sm-2
   .row
-    .col-lg-1
-    .col-xs-12.col-sm-4.col-lg-10 
+    .col-lg-1.col-xs-1.col-sm-1
+    .col-lg-10.col-xs-10.col-sm-10 
       #map.size_map
-    .col-lg-1
+    .col-lg-1.col-xs-1.col-sm-1
     

@@ -68,6 +68,10 @@ html body{
     font-style: italic;
 }
 
+.oblique {
+    font-style: oblique;
+}
+
 .text-red {
     color: red;
 }

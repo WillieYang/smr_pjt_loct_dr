@@ -412,7 +412,8 @@ var renderLovedLocation = function(req, res, responseBody){
 	res.render('loved_location', {
 		title: "Your Loved Locations",
 		user: req.user.username,
-		lovedLocation: responseBody
+		lovedLocation: responseBody,
+		userid: req.params.userid
 	});
 };
 
@@ -438,6 +439,28 @@ module.exports.lovedLocation_get = function(req, res){
 				};
 			}
 			renderLovedLocation(req, res, data);	
+		}
+	});
+};
+
+/* Delete a specific location 'lovedLocation' page. */
+
+module.exports.lovedLocation_delete = function(req, res){
+	console.log("Delete Controller");
+	var requestOptions, path, userid, lovedlocationid;
+	userid = req.params.userid;
+	lovedlocationid = req.params.lovedlocationid;
+	path = '/api/users/' + userid + '/lovedLocations/' + lovedlocationid;
+
+	requestOptions = {
+		url: apiChoosing.server + path,
+		method: "DELETE",
+		json: {},
+	};
+
+	request(requestOptions, function(err, response, body){
+		if (response.statusCode === 204) {
+			res.redirect('/users/' + userid + '/lovedLocations');	
 		}
 	});
 };
