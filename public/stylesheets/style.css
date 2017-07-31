@@ -36,6 +36,10 @@ html body{
     font-size:5em;
 }
 
+.size_adds {
+    font-size: 1.1em;    
+}
+
 .bg {
 	background-color: black;
 }

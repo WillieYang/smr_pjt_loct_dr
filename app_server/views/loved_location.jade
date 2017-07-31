@@ -12,9 +12,11 @@ block content
        each location in lovedLocation
         .card.card-outline-primary.bg_y
           .col-lg-4
-            p Name: #{location.locationName}
+            p.size_label
+             a(href = "/location/#{location.place_id}") Name: #{location.locationName}
           .col-lg-12 
-            p Address: #{location.locationAddress}
+            p.size_adds
+             a(href = "/location/#{location.place_id}") Address: #{location.locationAddress}
             p
               a(class="btn btn-primary btn-lg size-button float-right" href="/users/#{userid}/lovedLocations/route?lat=#{location.coords.lat}&lng=#{location.coords.lng}&locationName=#{location.locationName}") Route 
               form(action="/users/#{userid}/lovedLocations/#{location._id}", method="post", role="form")
