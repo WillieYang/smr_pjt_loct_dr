@@ -15,7 +15,7 @@ block content
            input(type="hidden", id="place_id", name='place_id', value="#{location.place_id}")
            input(type="hidden", id="lat", name='lat', value="#{location.coords.lat}")
            input(type="hidden", id="lng", name='lng', value="#{location.coords.lng}")
-           button.btn-warning.fa.fa-heart.text-red Love it
+           button(class="btn-warning", class="fa", class="fa-heart", class="text-red" title="Click here to place curren location to the loved loation list") Love it
   .row
       .col-xs-12.col-md-9
           .row
