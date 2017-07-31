@@ -2,8 +2,17 @@ extends layout
 
 block content
   .row.page-header
-    .col-md-6.col-sm-12
-      h1.text-warning= title
+    .col-md-6.col-sm-12.col-lg-12
+      br
+      h1.text-warning.text-center.size= title
   .row
-    .col-md-6.col-sm-12
-      p.text-warning !{(content).replace(/\n/g, '<br/>')}
+    .col-lg-12.col-md-6.col-sm-12.text-center
+      p.text-warning.size_p !{(content).replace(/\n/g, '<br/>')}
+    .col-lg-8
+  .row
+    .col-lg-1.col-xs-1.col-sm-1
+    .col-lg-10.col-xs-10.col-sm-10
+      script(src='/javascripts/map_current_location.js') 
+      #map.size_map
+    .col-lg-1.col-xs-1.col-sm-1
+    

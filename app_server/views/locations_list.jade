@@ -4,13 +4,13 @@ include _includes/sharedHTMLfunctions
 
 block content
   .page-header
-    .row
-      .col-lg-6
-        h1.sideword
-          strong.fa.fa-location-arrow
-          small.lead &nbsp;#{pageHeader.title}
   .row
-    .col-xs-12.col-sm-8.col-lg-6
+    .col-lg-6
+      h5.text-warning.sideword
+        strong.fa.fa-location-arrow
+        &nbsp;#{pageHeader.title}
+  .row
+    .col-xs-12.col-sm-12.col-lg-6
       h4.text-warning
         error= errorMessage
       .row.list-group
@@ -28,9 +28,9 @@ block content
                 span.badge.badge-pill.badge-warning= facility
                 | &nbsp;
 
-    .col-xs-12.col-sm-4.col-lg-5
-      p.lead.sideword Location Seeking helps you find place to work out.
+    .col-xs-12.col-sm-12.col-lg-5
+      h5.text-warning.sideword Location Seeking helps you find place to work out.
       script(src='/javascripts/map_current_location.js') 
-      #map
+      #map.size_map
 
 

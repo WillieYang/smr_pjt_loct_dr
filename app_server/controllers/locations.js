@@ -92,6 +92,9 @@ module.exports.locationList = function(req, res){
 	var lng = req.body.Longitude;
 	var lat = req.body.Latitude;
 	var requestOptions, path, placeAPI, APIKey, url;
+	if (lng === undefined || lat === undefined){
+		res.redirect('/users/');
+	}
 
 	APIKey = 'AIzaSyCh44nqumpJ45eYdA5q7PuWkXFt6sF82KY';
 	placeAPI = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'; 

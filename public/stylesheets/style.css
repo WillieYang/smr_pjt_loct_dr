@@ -91,6 +91,10 @@ hr { background-color: purple;
     font-size: 1.5em;
 }
 
+.size_p {
+    font-size: 1.2em;
+}
+
 .size-button {
   font-size: 1.3em;
   padding:5px;

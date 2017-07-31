@@ -20,6 +20,8 @@ module.exports = function(passport){
 /* Location page. */
 router.post('/locationlist', isAuthenticated, ctrlLocation.locationList);
 
+router.get('/locationlist', isAuthenticated, ctrlLocation.locationList);
+
 router.get('/location/:locationid', isAuthenticated, ctrlLocation.locationInfo);
 
 router.get('/location/:locationid/reviews/new', isAuthenticated, ctrlLocation.addReview);
