@@ -95,6 +95,10 @@ hr { background-color: purple;
     font-size: 1.5em;
 }
 
+.size_report {
+    font-size: 1.2em;
+}
+
 .size_p {
     font-size: 1.2em;
 }
@@ -106,7 +110,7 @@ hr { background-color: purple;
 }
 
 .size-button_s {
-  font-size: 0.7em;
+  font-size: 0.8em;
   padding:5px;
   margin: 13px;
 }

@@ -4,6 +4,7 @@ var router = express.Router();
 var ctrlLocation = require('../controllers/locations');
 var ctrlOthers = require('../controllers/others');
 var ctrlResults = require('../controllers/results');
+var ctrlReports = require('../controllers/reports');
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
@@ -45,6 +46,10 @@ router.get('/users/:userid/lovedLocations', isAuthenticated, ctrlLocation.lovedL
 router.post('/users/:userid/lovedLocations/:lovedlocationid', isAuthenticated, ctrlLocation.lovedLocation_delete);
 
 router.get('/users/:userid/lovedLocations/route', isAuthenticated, ctrlLocation.lovedLocation_route);
+
+/* User's report page */
+
+router.get('/location/:locationid/reviews/:reviewid/report', isAuthenticated, ctrlReports.addReport);
 
 return router;
 
