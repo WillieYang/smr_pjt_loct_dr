@@ -204,6 +204,7 @@ var renderDetailPage = function(req, res, locationInfo){
 		res.render('location_info', {
 			user: req.user.username,
 			userid: req.user._id,
+			useremail: req.user.email,
 			isAdmin: req.user.isAdmin,
 			title: locationInfo.name,
 			pageHeader: {

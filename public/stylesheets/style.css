@@ -105,6 +105,12 @@ hr { background-color: purple;
   margin: 13px;
 }
 
+.size-button_s {
+  font-size: 0.7em;
+  padding:5px;
+  margin: 13px;
+}
+
 .times-roman {
     font-family: "Times New Roman", Times, serif;
 }
