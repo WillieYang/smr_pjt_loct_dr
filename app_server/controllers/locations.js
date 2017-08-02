@@ -39,6 +39,7 @@ var renderLocationList = function(req, res, responseBody){
 	res.render('locations_list', {
 		user: req.user.username,
 		userid: req.user._id,
+		isAdmin: req.user.isAdmin,
 		title: 'Find places to work near you!',
 		pageHeader: {
 			title: 'Find places to work near you!'
@@ -203,6 +204,7 @@ var renderDetailPage = function(req, res, locationInfo){
 		res.render('location_info', {
 			user: req.user.username,
 			userid: req.user._id,
+			isAdmin: req.user.isAdmin,
 			title: locationInfo.name,
 			pageHeader: {
 				title: locationInfo.name
@@ -317,6 +319,7 @@ var renderReviewForm = function(req, res, locationInfo){
 	res.render('location_review_form', {
 		user: req.user.username,
 		userid: req.user._id,
+		isAdmin: req.user.isAdmin,
 		title: locationInfo.name,
 		pageHeader: {title: locationInfo.name},
 		location: locationInfo,
@@ -417,6 +420,7 @@ var renderLovedLocation = function(req, res, responseBody){
 	res.render('loved_location', {
 		title: "Your Loved Locations",
 		user: req.user.username,
+		isAdmin: req.user.isAdmin,
 		lovedLocation: responseBody,
 		userid: req.params.userid
 	});
@@ -482,6 +486,7 @@ module.exports.lovedLocation_route = function(req, res){
 		title: "Route to " + locationName,
 		user: req.user.username,
 		userid: req.params.userid,
+		isAdmin: req.user.isAdmin,
 		lat: lat,
 		lng: lng
 	});

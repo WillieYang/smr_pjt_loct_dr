@@ -9,20 +9,36 @@ html
   body
     nav(class="navbar navbar-toggleable-md navbar-inverse bg-primary")
       button(class="navbar-toggler navbar-toggler-right collapsed", type="button", data-toggle="collapse", data-target="#navbarColor01", aria-controls="navbarColor01" aria-expanded="false", aria-label="Toggle navigation") #[span(class="navbar-toggler-icon")]
-      a(class="navbar-brand", href="/users/") 
-        strong.text-warning Location Seeking
+      if user
+        if isAdmin === true
+          a(class="navbar-brand", href="/users/admin") 
+            strong.text-warning Location Seeking
+        else 
+          a(class="navbar-brand", href="/users/") 
+            strong.text-warning Location Seeking
+      else
+        a(class="navbar-brand", href="/") 
+            strong.text-warning Location Seeking
 
       div(class="navbar-collapse collapse show", id="navbarColor01", aria-expanded="true")
         ul(class="navbar-nav mr-auto")
           if user
-            li(class="nav-item")
-              a(class="nav-link text-warning", href="/users/") Hello #{user}
-            li(class="nav-item")
-              a(class="nav-link text-warning", href="/users/#{userid}/lovedLocations") Loved Locations
-            li(class="nav-item")
-              a(class="nav-link text-warning", href="/users/logout/") Logout
-            li(class="nav-item")
-              a(class="nav-link text-warning", href="/about/") About
+            if isAdmin === true
+              li(class="nav-item")
+                a(class="nav-link text-warning", href="/users/admin/") Hello #{user}
+              li(class="nav-item")
+                a(class="nav-link text-warning", href="/users/logout/") Logout
+              li(class="nav-item")
+                a(class="nav-link text-warning", href="/about/") About
+            else 
+              li(class="nav-item")
+                a(class="nav-link text-warning", href="/users/") Hello #{user}
+              li(class="nav-item")
+                a(class="nav-link text-warning", href="/users/#{userid}/lovedLocations") Loved Locations
+              li(class="nav-item")
+                a(class="nav-link text-warning", href="/users/logout/") Logout
+              li(class="nav-item")
+                a(class="nav-link text-warning", href="/about/") About
           else
             li(class="nav-item active")
               a(class="nav-link text-warning", href="/users/") Home

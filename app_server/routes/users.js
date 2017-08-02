@@ -36,7 +36,11 @@ module.exports = function(passport){
 		failureRedirect: '/users/login/',
 		failureFlash : true  
 	}), function(req, res){
-		res.redirect('/users/');
+		if (req.user.isAdmin === true){
+			res.redirect('/users/admin');
+		} else {
+			res.redirect('/users/');
+		}
 	});
 
 	/* GET Registration Page */
@@ -72,7 +76,14 @@ module.exports = function(passport){
 	});
 
 	/* Admin Page */
-	router.
+	router.get('/admin', isAdmin, function(req, res){
+		res.render('admin', {
+			title: "Hello Administrator!",
+			user: req.user.username,
+			userid: req.user._id,
+			isAdmin: req.user.isAdmin
+		});
+	});
 
 	return router;
 }
