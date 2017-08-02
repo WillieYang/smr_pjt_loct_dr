@@ -342,10 +342,12 @@ module.exports.addReview_post = function(req, res){
 	path = '/api/locations/' + locationid + '/reviews/';
 	postdata = {
 		author: req.user.username,
+		author_id: req.user._id,
+		author_email: req.user.email,
 		rating: parseInt(req.body.rating, 10),
 		reviewText: req.body.review
 	};
-	if (!postdata.author || !postdata.rating || !postdata.reviewText) {
+	if (!postdata.author || !postdata.rating || !postdata.reviewText || !postdata.author_email) {
 		res.redirect('/location/' + locationid + '/reviews/new?err=val');
 	} else {
 		requestOptions = {

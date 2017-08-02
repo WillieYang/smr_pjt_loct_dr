@@ -37,6 +37,8 @@ var addReview = function(req, res, location) {
   } else {
 	  location.reviews.push({
 	      author: req.body.author,
+	      author_id: req.body.author_id,
+	      author_email: req.body.author_email,
 	      rating: req.body.rating,
 	      reviewText: req.body.reviewText
 	  });
