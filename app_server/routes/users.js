@@ -11,6 +11,13 @@ var isAuthenticated = function (req, res, next) {
 	res.redirect('/');
 }
 
+var isAdmin = function (req, res, next) {
+	if (req.isAuthenticated() && req.user.isAdmin === true)
+		return next();
+	// if the user is not authenticated then redirect him to the login page
+	res.redirect('/');
+}
+
 module.exports = function(passport){
 
 	/* GET login page. */
@@ -63,6 +70,9 @@ module.exports = function(passport){
 		req.logout();
 		res.redirect('/users/');
 	});
+
+	/* Admin Page */
+	router.
 
 	return router;
 }
