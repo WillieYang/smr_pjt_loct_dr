@@ -5,3 +5,29 @@ block content
     .col-lg-12
       br
       h1.text-warning.size.text-center.italic= title
+  .row
+    .col-lg-2.col-xs-2.col-sm-2
+    .col-lg-8.col-xs-8.col-sm-8
+      p.text-warning
+        each report in reports
+          br
+          .card.card-outline-primary.bg_y
+            .col-lg-4
+              h5.text-primary Review Author: 
+              p.oblique #{report.reviewAuthor_name}
+              h5.text-primary Review Content: 
+              p.oblique #{report.review_content}
+              h5.text-primary Whistlebower: 
+              p.oblique #{report.whistlebower_name}
+              h5.text-primary Report Reason: 
+              p.oblique #{report.report_content}
+            .col-lg-12
+              form(action="", method="post", role="form")
+                button.btn.btn-primary.btn-lg.size-button.float-right Ignore
+              form(action="", method="post", role="form")
+                button.btn.btn-primary.btn-lg.size-button.float-right Remove
+              form(action="", method="post", role="form")
+                button.btn.btn-primary.btn-lg.size-button.float-right Contact Whistlebower
+              form(action="", method="post", role="form")
+                button.btn.btn-primary.btn-lg.size-button.float-right Contact Review Author
+
