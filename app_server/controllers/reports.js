@@ -98,3 +98,23 @@ module.exports.adminReports = function(req, res){
 		}
 	});
 };
+
+// ignore(delete) a specific report (fake report)
+
+module.exports.reportIgnore = function(req, res){
+	var requestOptions, path;
+	var reportid = req.params.reportid;
+	path = '/api/admin/reports/' + reportid;
+
+	requestOptions = {
+		url: apiChoosing.server + path,
+		method: "DELETE",
+		json: {},
+	};
+
+	request(requestOptions, function(err, response, body){
+		if (response.statusCode === 204) {
+			res.redirect('/users/admin/reports');
+		}
+	});
+};

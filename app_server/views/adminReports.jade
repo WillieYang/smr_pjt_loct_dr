@@ -22,7 +22,7 @@ block content
               h5.text-primary Report Reason: 
               p.oblique #{report.report_content}
             .col-lg-12
-              form(action="", method="post", role="form")
+              form(action="/users/admin/reports/#{report._id}", method="post", role="form")
                 button.btn.btn-primary.btn-lg.size-button.float-right Ignore
               form(action="", method="post", role="form")
                 button.btn.btn-primary.btn-lg.size-button.float-right Remove
@@ -30,4 +30,12 @@ block content
                 button.btn.btn-primary.btn-lg.size-button.float-right Contact Whistlebower
               form(action="", method="post", role="form")
                 button.btn.btn-primary.btn-lg.size-button.float-right Contact Review Author
+    .col-lg-2.col-xs-2.col-sm-2
+  .row
+    .col-lg-1.col-xs-1.col-sm-1
+    .col-lg-10.col-xs-10.col-sm-10
+      script(src='/javascripts/map_current_location.js') 
+      #map.size_map
+    .col-lg-1.col-xs-1.col-sm-1
+
 

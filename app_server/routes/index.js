@@ -64,6 +64,8 @@ router.post('/location/:locationid/reviews/:reviewid/report', isAuthenticated, c
 
 router.get('/users/admin/reports', isAdmin, ctrlReports.adminReports);
 
+router.post('/users/admin/reports/:reportid', isAdmin, ctrlReports.reportIgnore);
+
 return router;
 
 }
