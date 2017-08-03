@@ -34,8 +34,12 @@ router.delete('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation
 
 // report to the admin
 
-// create reports between users
+// create reports from users
 router.post('/admin/reports', ctrlReports.reportsCreate);
+
+// delete the reports form users
+
+router.delete('/admin/reports/:reportid', ctrlReports.reportsDelete);
 
 // export routes
 module.exports = router;

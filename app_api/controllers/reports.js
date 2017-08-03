@@ -6,7 +6,7 @@ var sendJsonResponse = function(res, status, content){
 	res.json(content);
 };
 
-// create
+// create reports
 module.exports.reportsCreate = function(req, res){
 	
 	Report.create({
@@ -25,4 +25,25 @@ module.exports.reportsCreate = function(req, res){
 			sendJsonResponse(res, 201, report);
 		}
 	});
+};
+
+// delete reports
+module.exports.reportsDelete = function(req, res){
+	var reportid = req.params.reportid;
+	if (reportid) {
+		Report
+			.findByIdAndRemove(reportid)
+			.exec(function(err, report){
+				if (err) {
+					sendJsonResponse(res, 404, err);
+					return;
+				}
+				sendJsonResponse(res, 204, null);
+			}
+		);
+	} else {
+		sendJsonResponse(res, 404, {
+			"message": "No reportid"
+		});
+	}
 };
