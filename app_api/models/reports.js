@@ -6,7 +6,7 @@ var reportSchema = new mongoose.Schema({
 	whistlebower_name: String,
 	whistlebower_email: String,
 	reviewAuthor_name: String,
-	whistlebower_email: String,
+	reviewAuthor_email: String,
 	review_content: String,
 	report_content: String,
 	place_id: String,

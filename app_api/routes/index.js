@@ -3,6 +3,7 @@ var router = express.Router();
 var ctrlLocations = require('../controllers/locations');
 var ctrlReviews = require('../controllers/reviews');
 var ctrlUserLocation = require('../controllers/userLocation');
+var ctrlReports = require('../controllers/reports');
 
 // locations
 router.get('/locations', ctrlLocations.locationsListByDistance);
@@ -30,6 +31,11 @@ router.get('/users/:userid/lovedLocations', ctrlUserLocation.lovedLocationListGe
 
 router.delete('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationDelete);
 // router.put('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationUpdate);
+
+// report to the admin
+
+// create reports between users
+router.post('/admin/reports', ctrlReports.reportsCreate);
 
 // export routes
 module.exports = router;
