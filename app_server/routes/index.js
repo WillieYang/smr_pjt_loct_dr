@@ -66,6 +66,8 @@ router.get('/users/admin/reports', isAdmin, ctrlReports.adminReports);
 
 router.post('/users/admin/reports/:reportid', isAdmin, ctrlReports.reportIgnore);
 
+router.post('/users/admin/reports/:reportid/reviewRemove', isAdmin, ctrlReports.reviewRemove);
+
 return router;
 
 }

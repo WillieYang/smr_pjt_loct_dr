@@ -97,7 +97,7 @@ var addReview = function(req, res, location) {
 module.exports.reviewsReadOne = function(req, res){
 	if (req.params && req.params.locationid && req.params.reviewid) {
 	    Location
-	      .findById(req.params.locationid)
+	      .findOne({'place_id': req.params.locationid})
 	      .select('name reviews')
 	      .exec(function(err, location) {
 	        var response, review;
@@ -157,7 +157,7 @@ module.exports.reviewsUpdateOne = function(req, res){
 		return;
 	}
 	Location
-		.findById(req.params.locationid)
+		.findOne({'place_id': req.params.locationid})
 		.select('reviews')
 		.exec(
 			function(err, location){
@@ -209,7 +209,7 @@ module.exports.reviewsDeleteOne = function(req, res){
 		return;
 	}
 	Location
-		.findById(req.params.locationid)
+		.findOne({'place_id': req.params.locationid})
 		.select('reviews')
 		.exec(
 			function(err, location){

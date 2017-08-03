@@ -118,3 +118,42 @@ module.exports.reportIgnore = function(req, res){
 		}
 	});
 };
+
+// remove a specific review (reported one)
+
+module.exports.reviewRemove = function(req, res){
+	var requestOptions, path;
+	var reportid = req.params.reportid;
+
+	var requestOptions_review, path_review;
+	var place_id = req.query.place_id;
+	var review_id = req.query.review_id;
+	
+	path = '/api/admin/reports/' + reportid;
+	path_review = '/api/locations/' + place_id + '/reviews/' + review_id;
+
+	requestOptions = {
+		url: apiChoosing.server + path,
+		method: "DELETE",
+		json: {},
+	};
+
+	requestOptions_review = {
+		url: apiChoosing.server + path_review,
+		method: "DELETE",
+		json: {},
+	};
+
+	request(requestOptions, function(err, response, body){
+		if (response.statusCode === 204) {
+			console.log("Delete the current report");
+
+			request(requestOptions_review, function(err_review, response_review, body_review){
+				if (response.statusCode === 204) {
+					console.log("Delete the reported review");
+					res.redirect('/users/admin/reports');
+				}
+			});
+		}
+	});
+};

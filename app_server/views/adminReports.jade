@@ -24,7 +24,7 @@ block content
             .col-lg-12
               form(action="/users/admin/reports/#{report._id}", method="post", role="form")
                 button.btn.btn-primary.btn-lg.size-button.float-right Ignore
-              form(action="", method="post", role="form")
+              form(action="/users/admin/reports/#{report._id}/reviewRemove?place_id=#{report.place_id}&review_id=#{report.review_id}", method="post", role="form")
                 button.btn.btn-primary.btn-lg.size-button.float-right Remove
               form(action="", method="post", role="form")
                 button.btn.btn-primary.btn-lg.size-button.float-right Contact Whistlebower
