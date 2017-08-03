@@ -51,6 +51,8 @@ router.get('/users/:userid/lovedLocations/route', isAuthenticated, ctrlLocation.
 
 router.get('/location/:locationid/reviews/:reviewid/report', isAuthenticated, ctrlReports.addReport);
 
+router.post('/location/:locationid/reviews/:reviewid/report', isAuthenticated, ctrlReports.addReport_post);
+
 return router;
 
 }
