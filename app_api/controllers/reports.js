@@ -47,3 +47,24 @@ module.exports.reportsDelete = function(req, res){
 		});
 	}
 };
+
+// get reports
+
+module.exports.reportsGet = function(req, res){
+	Report
+      .find()
+      .exec(function(err, report) {
+        if (!report) {
+          sendJsonResponse(res, 404, {
+            "message": "report not existed"
+          });
+		  return;
+        } else if (err) {
+          console.log(err);
+          sendJsonResponse(res, 404, err);
+          return;
+        }
+        console.log(report);
+        sendJsonResponse(res, 200, report);
+      });
+};

@@ -30,7 +30,6 @@ module.exports.addReport = function(req, res){
 };
 
 /* Post 'Report add' page. */
-
 module.exports.addReport_post = function(req, res){
 	var reviewAuthor_name = req.body.reviewAuthor_name;
 	var reviewAuthor_email = req.body.reviewAuthor_email;
@@ -67,6 +66,35 @@ module.exports.addReport_post = function(req, res){
 			res.redirect('/location/' + place_id);
 		} else {
 			showError(req, res, response.statusCode);
+		}
+	});
+};
+
+// Admin reports view page
+var renderAdminReports = function(req, res, response){
+	res.render('adminReports', {
+		title: "Admin Reports",
+		user: req.user.username,
+		userid: req.user._id,
+		useremail: req.user.email,
+		isAdmin: req.user.isAdmin,
+		reports: response
+	});
+};
+
+module.exports.adminReports = function(req, res){
+	var requestOptions, path;
+	path = '/api/admin/reports';
+
+	requestOptions = {
+		url: apiChoosing.server + path,
+		method: "GET",
+		json: {},
+	};
+
+	request(requestOptions, function(err, response, body){
+		if (response.statusCode === 200){
+			renderAdminReports(req, res, body);
 		}
 	});
 };

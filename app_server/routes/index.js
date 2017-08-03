@@ -16,6 +16,13 @@ var isAuthenticated = function (req, res, next) {
 	res.redirect('/users/login/');
 }
 
+var isAdmin = function (req, res, next) {
+	if (req.isAuthenticated() && req.user.isAdmin === true)
+		return next();
+	// if the user is not authenticated then redirect him to the login page
+	res.redirect('/');
+}
+
 module.exports = function(passport){
 
 /* Location page. */
@@ -52,6 +59,11 @@ router.get('/users/:userid/lovedLocations/route', isAuthenticated, ctrlLocation.
 router.get('/location/:locationid/reviews/:reviewid/report', isAuthenticated, ctrlReports.addReport);
 
 router.post('/location/:locationid/reviews/:reviewid/report', isAuthenticated, ctrlReports.addReport_post);
+
+/* User's Page */
+
+router.get('/users/admin/reports', isAdmin, ctrlReports.adminReports);
+
 
 return router;
 

@@ -12,14 +12,13 @@ router.get('/locations/:locationid', ctrlLocations.locationsReadOne);
 router.put('/locations/:locationid', ctrlLocations.locationsUpdateOne);
 router.delete('/locations/:locationid', ctrlLocations.locationsDeleteOne);
 
-// reviews
+/* reviews */
 router.post('/locations/:locationid/reviews', ctrlReviews.reviewsCreate);
 router.get('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsReadOne);
 router.put('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsUpdateOne);
 router.delete('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsDeleteOne);
 
-// user's loved location
-
+/* user's loved location */
 // create a loved locaiton for a specific user.
 router.post('/users/:userid/lovedLocations', ctrlUserLocation.lovedLocationCreate);
 
@@ -30,16 +29,18 @@ router.get('/users/:userid/lovedLocations/:lovedLocationName', ctrlUserLocation.
 router.get('/users/:userid/lovedLocations', ctrlUserLocation.lovedLocationListGet);
 
 router.delete('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationDelete);
-// router.put('/users/:userid/lovedLocations/:lovedlocationid', ctrlUserLocation.lovedLocationUpdate);
 
-// report to the admin
-
+/* report to the admin */
 // create reports from users
 router.post('/admin/reports', ctrlReports.reportsCreate);
 
 // delete the reports form users
 
 router.delete('/admin/reports/:reportid', ctrlReports.reportsDelete);
+
+// get reports in admin page.
+
+router.get('/admin/reports', ctrlReports.reportsGet);
 
 // export routes
 module.exports = router;
