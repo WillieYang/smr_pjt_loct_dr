@@ -409,7 +409,7 @@ module.exports.lovedLocation_post = function(req, res){
 				res.redirect('/users/' + userid + '/lovedLocations');
 				console.log("lovedLocations create successful");
 		    } else {
-			  showError(req, res, response.statusCode);
+			  	res.redirect('/location/' + req.body.place_id);
 				}
 			});
 		}
