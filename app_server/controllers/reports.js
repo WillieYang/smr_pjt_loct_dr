@@ -100,7 +100,6 @@ module.exports.adminReports = function(req, res){
 };
 
 // ignore(delete) a specific report (fake report)
-
 module.exports.reportIgnore = function(req, res){
 	var requestOptions, path;
 	var reportid = req.params.reportid;
@@ -119,8 +118,7 @@ module.exports.reportIgnore = function(req, res){
 	});
 };
 
-// remove a specific review (reported one)
-
+// remove a specific review (reported one) and report
 module.exports.reviewRemove = function(req, res){
 	var requestOptions, path;
 	var reportid = req.params.reportid;
@@ -156,4 +154,44 @@ module.exports.reviewRemove = function(req, res){
 			});
 		}
 	});
+};
+
+// form to contact the whistlebower or review author
+var renderContactForm = function(req, res){
+	var whistlebower_name = req.query.whistlebower_name;
+	var whistlebower_email = req.query.whistlebower_email;
+	var reviewAuthor_name = req.query.reviewAuthor_name;
+	var reviewAuthor_email = req.query.reviewAuthor_email;
+	var passData;
+	//console.log("whistlebower_name:" + whistlebower_name);
+
+	if (whistlebower_name && whistlebower_email){
+		passData = {
+			title: "Contact",
+			contact_name: whistlebower_name,
+			contact_email: whistlebower_email,
+			user: req.user.username,
+			userid: req.user._id,
+			useremail: req.user.email,
+			isAdmin: req.user.isAdmin	
+		};
+	}
+
+	if (reviewAuthor_name && reviewAuthor_email){
+		passData = {
+			title: "Contact",
+			contact_name: reviewAuthor_name,
+			contact_email: reviewAuthor_email,
+			user: req.user.username,
+			userid: req.user._id,
+			useremail: req.user.email,
+			isAdmin: req.user.isAdmin	
+		};
+	}
+	console.log("passData:" + passData);	
+	res.render('report_contact_form', passData);
+};
+
+module.exports.reportContactForm = function(req, res){
+	renderContactForm(req, res);
 };

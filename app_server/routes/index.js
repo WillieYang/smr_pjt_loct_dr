@@ -60,13 +60,15 @@ router.get('/location/:locationid/reviews/:reviewid/report', isAuthenticated, ct
 
 router.post('/location/:locationid/reviews/:reviewid/report', isAuthenticated, ctrlReports.addReport_post);
 
-/* User's Page */
+/* Admin Report Page */
 
 router.get('/users/admin/reports', isAdmin, ctrlReports.adminReports);
 
 router.post('/users/admin/reports/:reportid', isAdmin, ctrlReports.reportIgnore);
 
 router.post('/users/admin/reports/:reportid/reviewRemove', isAdmin, ctrlReports.reviewRemove);
+
+router.get('/users/admin/reports/contact_form', isAdmin, ctrlReports.reportContactForm);
 
 return router;
 
