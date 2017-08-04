@@ -1,6 +1,14 @@
 // import the request module into this file
 var request = require('request');
+var nodemailer = require('nodemailer');
 
+var transporter = nodemailer.createTransport({
+    service: 'yahoo',
+    auth: {
+        user: 'shengyangsn@yahoo.com',
+        pass: '13890427898ys'
+    }
+});	
 
 // set the different options both in local and living environment.
 var apiChoosing = {
@@ -194,4 +202,31 @@ var renderContactForm = function(req, res){
 
 module.exports.reportContactForm = function(req, res){
 	renderContactForm(req, res);
+};
+
+// send message to corresponding people
+module.exports.reportContact_post = function(req, res){
+	var contact_name = req.body.contact_name;
+	var contact_email = req.body.contact_email;
+	var send_content = req.body.send_content;
+	console.log("Whether this controller is operated?");
+	console.log("contact_name: " + contact_name);
+	console.log("contact_email: " + contact_email);
+	console.log("send_content: " + send_content);
+
+	var mailOptions = {
+		from: 'shengyangsn@yahoo.com',
+		to: contact_email,
+		subject: 'Official Message from Locaiton Seeking',
+		text: send_content
+	};
+
+	transporter.sendMail(mailOptions, function(error, info){
+		if (error){
+			console.log(error);
+		} else {
+			console.log("Email sent: " + info.response);
+		}
+	});
+	res.redirect('/users/admin/reports');
 };

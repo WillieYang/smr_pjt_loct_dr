@@ -70,6 +70,8 @@ router.post('/users/admin/reports/:reportid/reviewRemove', isAdmin, ctrlReports.
 
 router.get('/users/admin/reports/contact_form', isAdmin, ctrlReports.reportContactForm);
 
+router.post('users/admin/reports/contact', isAdmin, ctrlReports.reportContact_post);
+
 return router;
 
 }
