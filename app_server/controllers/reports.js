@@ -200,17 +200,17 @@ var renderContactForm = function(req, res){
 	res.render('report_contact_form', passData);
 };
 
-module.exports.reportContactForm = function(req, res){
+module.exports.reportContact_get = function(req, res){
 	renderContactForm(req, res);
 };
 
 // send message to corresponding people
 module.exports.reportContact_post = function(req, res){
-	var contact_name = req.body.contact_name;
+	var contact_name = req.body.contact_naqqme;
 	var contact_email = req.body.contact_email;
 	var send_content = req.body.send_content;
 	console.log("Whether this controller is operated?");
-	console.log("contact_name: " + contact_name);
+	console.log("consoleontact_name: " + contact_name);
 	console.log("contact_email: " + contact_email);
 	console.log("send_content: " + send_content);
 
@@ -228,5 +228,5 @@ module.exports.reportContact_post = function(req, res){
 			console.log("Email sent: " + info.response);
 		}
 	});
-	res.redirect('/users/admin/reports');
+	res.redirect('/users/admin');
 };

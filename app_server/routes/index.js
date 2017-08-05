@@ -68,9 +68,9 @@ router.post('/users/admin/reports/:reportid', isAdmin, ctrlReports.reportIgnore)
 
 router.post('/users/admin/reports/:reportid/reviewRemove', isAdmin, ctrlReports.reviewRemove);
 
-router.get('/users/admin/reports/contact_form', isAdmin, ctrlReports.reportContactForm);
+router.get('/users/admin/contact', isAdmin, ctrlReports.reportContact_get);
 
-router.post('users/admin/reports/contact', isAdmin, ctrlReports.reportContact_post);
+router.post('/users/admin/contact', isAdmin, ctrlReports.reportContact_post);
 
 return router;
 

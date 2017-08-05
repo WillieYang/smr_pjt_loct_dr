@@ -28,8 +28,8 @@ block content
                 form(action="/users/admin/reports/#{report._id}/reviewRemove?place_id=#{report.place_id}&review_id=#{report.review_id}", method="post", role="form")
                   button.btn.btn-primary.btn-lg.size-button.float-right Remove
               .col-xs-6
-                a(class="btn btn-primary btn-lg size-button float-right" href="/users/admin/reports/contact_form?whistlebower_name=#{report.whistlebower_name}&whistlebower_email=#{report.whistlebower_email}") Contact Whistlebower
-                a(class="btn btn-primary btn-lg size-button float-right" href="/users/admin/reports/contact_form?reviewAuthor_name=#{report.reviewAuthor_name}&reviewAuthor_email=#{report.reviewAuthor_email}") Contact Review Author
+                a(class="btn btn-primary btn-lg size-button float-right" href="/users/admin/contact?whistlebower_name=#{report.whistlebower_name}&whistlebower_email=#{report.whistlebower_email}") Contact Whistlebower
+                a(class="btn btn-primary btn-lg size-button float-right" href="/users/admin/contact?reviewAuthor_name=#{report.reviewAuthor_name}&reviewAuthor_email=#{report.reviewAuthor_email}") Contact Review Author
     .col-lg-2.col-xs-2.col-sm-2
   .row
     .col-lg-1.col-xs-1.col-sm-1

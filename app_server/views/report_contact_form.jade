@@ -8,11 +8,11 @@ block content
   .row
     .col-xs-12.col-md-6.mx-auto
       .card.card-outline-primary.bg_y
-        form(action="/users/admin/reports/contact", method="post", role="form")
+        form(action="", method="post", role="form", name="reportContact")
           .form-group.card-block
             label.col-lg-12.col-xs-12.col-sm-12.text-primary.size_label.form-control-label(for="contact_name") Send to
-            input(type="hidden", id="contact_name", name='contact_name', value="#{contact_name}")
-            input(type="hidden", id="contact_email", name='contact_email', value="#{contact_email}")
+            //- input(type="hidden", id="contact_name", name='contact_name', value="#{contact_name}")
+            //- input(type="hidden", id="contact_email", name='contact_email', value="#{contact_email}")
             //- input(type="hidden", id="whistlebower_name", name='whistlebower_name', value="#{user}")
             //- input(type="hidden", id="whistlebower_email", name='whistlebower_email', value="#{useremail}")
             .col-xs-12.col-sm-10
