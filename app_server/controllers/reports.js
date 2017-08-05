@@ -206,7 +206,7 @@ module.exports.reportContact_get = function(req, res){
 
 // send message to corresponding people
 module.exports.reportContact_post = function(req, res){
-	var contact_name = req.body.contact_naqqme;
+	var contact_name = req.body.contact_name;
 	var contact_email = req.body.contact_email;
 	var send_content = req.body.send_content;
 	console.log("Whether this controller is operated?");
