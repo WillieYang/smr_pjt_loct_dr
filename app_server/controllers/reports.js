@@ -214,11 +214,13 @@ module.exports.reportContact_post = function(req, res){
 	console.log("contact_email: " + contact_email);
 	console.log("send_content: " + send_content);
 
+	var text = "Hi " + contact_name + ",\r\n" + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0" + "This is the message from Locaiton Seeking.\n" + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0" + send_content + "\r\n" + "Thanks for your cooperation!" + "\nLocation Seeking Office";
+
 	var mailOptions = {
 		from: 'shengyangsn@yahoo.com',
 		to: contact_email,
 		subject: 'Official Message from Locaiton Seeking',
-		text: send_content
+		text: text
 	};
 
 	transporter.sendMail(mailOptions, function(error, info){
