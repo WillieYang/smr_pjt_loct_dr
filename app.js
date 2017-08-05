@@ -38,8 +38,9 @@ app.use('/api', routesApi);
 // Configuring Passport
 app.use(expressSession({
 	secret: 'mySecretKey',
+  cookie: { maxAge: 60000 },
 	resave: true,
-    saveUninitialized: true
+  saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
