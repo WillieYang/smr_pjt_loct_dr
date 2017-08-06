@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 
 // Schema for reports to admin
 var reportSchema = new mongoose.Schema({
+	location_name: String,
 	whistlebower_name: String,
 	whistlebower_email: String,
 	reviewAuthor_name: String,

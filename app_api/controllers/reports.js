@@ -10,6 +10,7 @@ var sendJsonResponse = function(res, status, content){
 module.exports.reportsCreate = function(req, res){
 	
 	Report.create({
+		location_name: req.body.location_name,
 		whistlebower_name: req.body.whistlebower_name,
 		whistlebower_email: req.body.whistlebower_email,
 		reviewAuthor_name: req.body.reviewAuthor_name,

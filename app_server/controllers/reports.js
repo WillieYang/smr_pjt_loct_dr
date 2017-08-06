@@ -27,6 +27,7 @@ var renderReportForm = function(req, res){
 		userid: req.user._id,
 		useremail: req.user.email,
 		isAdmin: req.user.isAdmin,
+		location_name: req.query.location_name,
 		reviewAuthor_name: req.query.reviewAuthor_name,
 		reviewAuthor_email: req.query.reviewAuthor_email,
 		review_content: req.query.review_content
@@ -39,6 +40,7 @@ module.exports.addReport = function(req, res){
 
 /* Post 'Report add' page. */
 module.exports.addReport_post = function(req, res){
+	var location_name = req.body.location_name;
 	var reviewAuthor_name = req.body.reviewAuthor_name;
 	var reviewAuthor_email = req.body.reviewAuthor_email;
 	var whistlebower_name = req.body.whistlebower_name;
@@ -53,6 +55,7 @@ module.exports.addReport_post = function(req, res){
 	path_post = '/api/admin/reports';
 
 	postdata = {
+		location_name: location_name,
 		reviewAuthor_name: reviewAuthor_name,
 		reviewAuthor_email: reviewAuthor_email,
 		whistlebower_name: whistlebower_name,

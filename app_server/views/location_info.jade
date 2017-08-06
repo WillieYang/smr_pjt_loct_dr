@@ -66,7 +66,7 @@ block content
                             +formatDate(review.createdOn)
                           p.sideword !{(review.reviewText).replace(/\n/g, '<br/>')}
                       .col-lg-6.col-sm-6.col-xs-6
-                        a(class="btn btn-warning btn-lg float-right size-button_s", href="/location/#{location.place_id}/reviews/#{review._id}/report?reviewAuthor_name=#{review.author}&reviewAuthor_email=#{review.author_email}&review_content=#{review.reviewText}") Report
+                        a(class="btn btn-warning btn-lg float-right size-button_s", href="/location/#{location.place_id}/reviews/#{review._id}/report?reviewAuthor_name=#{review.author}&reviewAuthor_email=#{review.author_email}&review_content=#{review.reviewText}&location_name=#{location.name}") Report
       .col-xs-12.col-md-3
         p.lead.sideword #{location.name} #{sidebar.context}
         p.sideword #{sidebar.callToAction}

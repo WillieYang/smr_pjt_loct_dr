@@ -11,6 +11,7 @@ block content
         form(action="", method="post", role="form", name="addReport")
           .form-group.card-block
             label.col-lg-12.col-xs-12.col-sm-12.text-primary.size_label.form-control-label(for="reviewAuthor_name") Review Author
+            input(type="hidden", id="location_name", name='location_name', value="#{location_name}")
             input(type="hidden", id="reviewAuthor_name", name='reviewAuthor_name', value="#{reviewAuthor_name}")
             input(type="hidden", id="reviewAuthor_email", name='reviewAuthor_email', value="#{reviewAuthor_email}")
             input(type="hidden", id="whistlebower_name", name='whistlebower_name', value="#{user}")
