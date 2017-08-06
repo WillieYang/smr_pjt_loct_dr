@@ -249,5 +249,20 @@ module.exports.reportContact_post = function(req, res){
 			console.log("Email sent: " + info.response);
 		}
 	});
-	res.redirect('/users/admin');
+	res.redirect('/users/admin/contact/success');
+};
+
+/* Get 'Contact successful' page. */
+var renderContactSuccess = function(req, res){
+	res.render('report_contact_success', {
+		title: "Contact",
+		user: req.user.username,
+		userid: req.user._id,
+		useremail: req.user.email,
+		isAdmin: req.user.isAdmin
+	});
+};
+
+module.exports.contactSuccess = function(req, res){
+	renderContactSuccess(req, res);
 };
