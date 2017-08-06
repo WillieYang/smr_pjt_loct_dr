@@ -90,8 +90,10 @@ var getDistance = function(lat1, lng1, lat2, lng2){
 module.exports.locationList = function(req, res){
 	console.log("Passed Latitude:" + req.body.Latitude);
 	console.log("Passed Longitude:" + req.body.Longitude);
+	console.log("Location Options:" + req.body.LocationOption);
 	var lng = req.body.Longitude;
 	var lat = req.body.Latitude;
+	var location_option = req.body.LocationOption;
 	var requestOptions, path, placeAPI, APIKey, url;
 	if (lng === undefined || lat === undefined){
 		res.redirect('/users/');
@@ -99,7 +101,7 @@ module.exports.locationList = function(req, res){
 
 	APIKey = 'AIzaSyCh44nqumpJ45eYdA5q7PuWkXFt6sF82KY';
 	placeAPI = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'; 
-	url = placeAPI + 'location=' + lat +', ' + lng + '&radius=500' + '&type=restaurant' + '&key=' + APIKey;
+	url = placeAPI + 'location=' + lat +', ' + lng + '&radius=500' + '&type=' + location_option + '&key=' + APIKey;
 
 	requestOptions = {
 		url: url,

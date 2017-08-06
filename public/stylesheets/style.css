@@ -107,6 +107,10 @@ hr { background-color: purple;
     font-size: 1.2em;
 }
 
+.btn-lg {
+  margin: 13px;
+}
+
 .size-button {
   font-size: 1.3em;
   padding:5px;
