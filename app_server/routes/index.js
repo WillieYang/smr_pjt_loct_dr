@@ -80,6 +80,8 @@ router.get('/users/admin/contact/success', isAdmin, ctrlReports.contactSuccess);
 
 router.get('/users/admin/reports/ignoreSuccess', isAdmin, ctrlReports.ignoreSuccess);
 
+router.get('/users/admin/reports/reviewRemoveSuccess', isAdmin, ctrlReports.reviewRemoveSuccess);
+
 return router;
 
 }

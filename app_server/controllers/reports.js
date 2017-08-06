@@ -191,11 +191,26 @@ module.exports.reviewRemove = function(req, res){
 			request(requestOptions_review, function(err_review, response_review, body_review){
 				if (response.statusCode === 204) {
 					console.log("Delete the reported review");
-					res.redirect('/users/admin/reports');
+					res.redirect('/users/admin/reports/reviewRemoveSuccess');
 				}
 			});
 		}
 	});
+};
+
+/* Get 'Review Remove successful' page. */
+var renderReviewRemoveSuccess = function(req, res){
+	res.render('review_remove_success', {
+		title: "Admin Reports",
+		user: req.user.username,
+		userid: req.user._id,
+		useremail: req.user.email,
+		isAdmin: req.user.isAdmin
+	});
+};
+
+module.exports.reviewRemoveSuccess = function(req, res){
+	renderReviewRemoveSuccess(req, res);
 };
 
 // form to contact the whistlebower or review author
