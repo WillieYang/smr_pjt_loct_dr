@@ -192,13 +192,30 @@ module.exports.reviewRemove = function(req, res){
 			console.log("Delete the current report");
 
 			request(requestOptions_review, function(err_review, response_review, body_review){
-				if (response.statusCode === 204) {
+				if (response_review.statusCode === 204) {
 					console.log("Delete the reported review");
 					res.redirect('/users/admin/reports/reviewRemoveSuccess');
+				} else if (response_review.statusCode === 404) {
+					res.redirect('/users/admin/reports/reviewRemoveFailed');
 				}
 			});
 		}
 	});
+};
+
+/* Get 'Review Remove failed' page. */
+var renderReviewRemoveFailed = function(req, res){
+	res.render('review_remove_failed', {
+		title: "Admin Reports",
+		user: req.user.username,
+		userid: req.user._id,
+		useremail: req.user.email,
+		isAdmin: req.user.isAdmin
+	});
+};
+
+module.exports.reviewRemoveFailed = function(req, res){
+	renderReviewRemoveFailed(req, res);
 };
 
 /* Get 'Review Remove successful' page. */

@@ -82,6 +82,10 @@ router.get('/users/admin/reports/ignoreSuccess', isAdmin, ctrlReports.ignoreSucc
 
 router.get('/users/admin/reports/reviewRemoveSuccess', isAdmin, ctrlReports.reviewRemoveSuccess);
 
+/* Failed Page */
+
+router.get('/users/admin/reports/reviewRemoveFailed', isAdmin, ctrlReports.reviewRemoveFailed);
+
 return router;
 
 }
