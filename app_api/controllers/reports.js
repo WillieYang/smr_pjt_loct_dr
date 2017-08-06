@@ -11,8 +11,8 @@ module.exports.reportsCreate = function(req, res){
 	
 	Report.create({
 		location_name: req.body.location_name,
-		whistlebower_name: req.body.whistlebower_name,
-		whistlebower_email: req.body.whistlebower_email,
+		whistleblower_name: req.body.whistleblower_name,
+		whistleblower_email: req.body.whistleblower_email,
 		reviewAuthor_name: req.body.reviewAuthor_name,
 		reviewAuthor_email: req.body.reviewAuthor_email,
 		review_content: req.body.review_content,

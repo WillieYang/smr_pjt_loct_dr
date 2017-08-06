@@ -43,8 +43,8 @@ module.exports.addReport_post = function(req, res){
 	var location_name = req.body.location_name;
 	var reviewAuthor_name = req.body.reviewAuthor_name;
 	var reviewAuthor_email = req.body.reviewAuthor_email;
-	var whistlebower_name = req.body.whistlebower_name;
-	var whistlebower_email = req.body.whistlebower_email;
+	var whistleblower_name = req.body.whistleblower_name;
+	var whistleblower_email = req.body.whistleblower_email;
 	var review_content = req.body.review_content;
 	var report_content = req.body.report_content;
 	var place_id = req.params.locationid;
@@ -58,8 +58,8 @@ module.exports.addReport_post = function(req, res){
 		location_name: location_name,
 		reviewAuthor_name: reviewAuthor_name,
 		reviewAuthor_email: reviewAuthor_email,
-		whistlebower_name: whistlebower_name,
-		whistlebower_email: whistlebower_email,
+		whistleblower_name: whistleblower_name,
+		whistleblower_email: whistleblower_email,
 		review_content: review_content,
 		report_content: report_content,
 		place_id: place_id,
@@ -233,20 +233,20 @@ module.exports.reviewRemoveSuccess = function(req, res){
 	renderReviewRemoveSuccess(req, res);
 };
 
-// form to contact the whistlebower or review author
+// form to contact the whistleblower or review author
 var renderContactForm = function(req, res){
-	var whistlebower_name = req.query.whistlebower_name;
-	var whistlebower_email = req.query.whistlebower_email;
+	var whistleblower_name = req.query.whistleblower_name;
+	var whistleblower_email = req.query.whistleblower_email;
 	var reviewAuthor_name = req.query.reviewAuthor_name;
 	var reviewAuthor_email = req.query.reviewAuthor_email;
 	var passData;
-	//console.log("whistlebower_name:" + whistlebower_name);
+	//console.log("whistleblower_name:" + whistleblower_name);
 
-	if (whistlebower_name && whistlebower_email){
+	if (whistleblower_name && whistleblower_email){
 		passData = {
 			title: "Contact",
-			contact_name: whistlebower_name,
-			contact_email: whistlebower_email,
+			contact_name: whistleblower_name,
+			contact_email: whistleblower_email,
 			user: req.user.username,
 			userid: req.user._id,
 			useremail: req.user.email,
