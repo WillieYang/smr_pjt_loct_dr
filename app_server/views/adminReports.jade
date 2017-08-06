@@ -12,6 +12,8 @@ block content
         each report in reports
           br
           .card.card-outline-primary.bg_y
+            br
+            p.text-center.oblique #{report.createdOn}
             .col-lg-4
               h5.text-primary Review Author: 
               p.oblique #{report.reviewAuthor_name}
