@@ -126,7 +126,7 @@ module.exports.adminReports = function(req, res){
 	});
 };
 
-// ignore(delete) a specific report (fake report)
+// Post: ignore(delete) a specific report (fake report)
 module.exports.reportIgnore = function(req, res){
 	var requestOptions, path;
 	var reportid = req.params.reportid;
@@ -140,9 +140,24 @@ module.exports.reportIgnore = function(req, res){
 
 	request(requestOptions, function(err, response, body){
 		if (response.statusCode === 204) {
-			res.redirect('/users/admin/reports');
+			res.redirect('/users/admin/reports/ignoreSuccess');
 		}
 	});
+};
+
+/* Get 'Ignore successful' page. */
+var renderIgnoreSuccess = function(req, res){
+	res.render('report_ignore_success', {
+		title: "Admin Reports",
+		user: req.user.username,
+		userid: req.user._id,
+		useremail: req.user.email,
+		isAdmin: req.user.isAdmin
+	});
+};
+
+module.exports.ignoreSuccess = function(req, res){
+	renderIgnoreSuccess(req, res);
 };
 
 // remove a specific review (reported one) and report

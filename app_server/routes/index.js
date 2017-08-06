@@ -78,6 +78,8 @@ router.get('/location/:locationid/report/success', isAuthenticated, ctrlReports.
 
 router.get('/users/admin/contact/success', isAdmin, ctrlReports.contactSuccess);
 
+router.get('/users/admin/reports/ignoreSuccess', isAdmin, ctrlReports.ignoreSuccess);
+
 return router;
 
 }
