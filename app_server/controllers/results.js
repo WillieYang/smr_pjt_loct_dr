@@ -72,3 +72,9 @@ module.exports.searchResults = function(req, res){
 		}
 	});
 };
+
+// get the result
+
+module.exports.resultsGet = function (req, res){
+	res.redirect(/users/);
+};

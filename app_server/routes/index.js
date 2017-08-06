@@ -42,6 +42,8 @@ router.get('/', ctrlOthers.homepage);
 router.get('/about', isAuthenticated, ctrlOthers.about);
 
 /* Google search results page. */
+router.get('/results', isAuthenticated, ctrlResults.resultsGet);
+
 router.post('/results', isAuthenticated, ctrlResults.searchResults);
 
 /* User's loved location page */
