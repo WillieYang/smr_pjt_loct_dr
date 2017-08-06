@@ -12,6 +12,8 @@ block content
        each location in lovedLocation
         br
         .card.card-outline-primary.bg_y
+          br
+          p.text-center.oblique Loved in #{location.createdOn}
           .col-lg-4
             p.size_label
              a(href = "/location/#{location.place_id}") Name: #{location.locationName}
