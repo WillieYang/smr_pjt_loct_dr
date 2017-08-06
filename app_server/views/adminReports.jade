@@ -28,9 +28,9 @@ block content
             .col-lg-12
               .col-xs-6
                 form(action="/users/admin/reports/#{report._id}", method="post", role="form")
-                  button.btn.btn-primary.btn-lg.size-button.float-right Ignore
+                  button.btn.btn-primary.btn-lg.size-button.float-right Ignore this Report
                 form(action="/users/admin/reports/#{report._id}/reviewRemove?place_id=#{report.place_id}&review_id=#{report.review_id}", method="post", role="form")
-                  button.btn.btn-primary.btn-lg.size-button.float-right Remove
+                  button.btn.btn-primary.btn-lg.size-button.float-right Remove the Review
               .col-xs-6
                 a(class="btn btn-primary btn-lg size-button float-right" href="/users/admin/contact?whistleblower_name=#{report.whistleblower_name}&whistleblower_email=#{report.whistleblower_email}") Contact Whistleblower
                 a(class="btn btn-primary btn-lg size-button float-right" href="/users/admin/contact?reviewAuthor_name=#{report.reviewAuthor_name}&reviewAuthor_email=#{report.reviewAuthor_email}") Contact Review Author
