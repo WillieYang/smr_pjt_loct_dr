@@ -71,12 +71,31 @@ module.exports.addReport_post = function(req, res){
 
 	request(requestOptions_post, function(err, response, body){
 		if (response.statusCode === 201){
-			res.redirect('/location/' + place_id);
+			res.redirect('/location/' + place_id + '/report/success');
 		} else {
 			showError(req, res, response.statusCode);
 		}
 	});
 };
+
+/* Get 'Report successful' page. */
+var renderReportSuccess = function(req, res){
+	var locationid = req.params.locationid;
+	console.log("Place_id:" + locationid);
+	res.render('review_report_success', {
+		title: "Report",
+		user: req.user.username,
+		userid: req.user._id,
+		useremail: req.user.email,
+		isAdmin: req.user.isAdmin,
+		place_id: locationid
+	});
+};
+
+module.exports.reportSuccess = function(req, res){
+	renderReportSuccess(req, res);
+};
+
 
 // Admin reports view page
 var renderAdminReports = function(req, res, response){

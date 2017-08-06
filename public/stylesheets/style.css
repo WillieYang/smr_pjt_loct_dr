@@ -40,6 +40,10 @@ html body{
     font-size: 1.1em;    
 }
 
+.size_text {
+  font-size: 2em;
+}
+
 .bg {
 	background-color: black;
 }

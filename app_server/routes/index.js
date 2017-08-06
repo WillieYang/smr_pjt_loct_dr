@@ -72,6 +72,10 @@ router.get('/users/admin/contact', isAdmin, ctrlReports.reportContact_get);
 
 router.post('/users/admin/contact', isAdmin, ctrlReports.reportContact_post);
 
+/* Successful Page */
+
+router.get('/location/:locationid/report/success', isAuthenticated, ctrlReports.reportSuccess);
+
 return router;
 
 }
