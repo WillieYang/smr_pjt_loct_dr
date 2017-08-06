@@ -21,7 +21,7 @@ block content
               p.oblique #{report.review_content}
               h5.text-primary Review Author: 
               p.oblique #{report.reviewAuthor_name}
-              h5.text-primary whistleblower: 
+              h5.text-primary Whistleblower: 
               p.oblique #{report.whistleblower_name}
               h5.text-primary Report Reason: 
               p.oblique #{report.report_content}
@@ -32,7 +32,7 @@ block content
                 form(action="/users/admin/reports/#{report._id}/reviewRemove?place_id=#{report.place_id}&review_id=#{report.review_id}", method="post", role="form")
                   button.btn.btn-primary.btn-lg.size-button.float-right Remove
               .col-xs-6
-                a(class="btn btn-primary btn-lg size-button float-right" href="/users/admin/contact?whistleblower_name=#{report.whistleblower_name}&whistleblower_email=#{report.whistleblower_email}") Contact whistleblower
+                a(class="btn btn-primary btn-lg size-button float-right" href="/users/admin/contact?whistleblower_name=#{report.whistleblower_name}&whistleblower_email=#{report.whistleblower_email}") Contact Whistleblower
                 a(class="btn btn-primary btn-lg size-button float-right" href="/users/admin/contact?reviewAuthor_name=#{report.reviewAuthor_name}&reviewAuthor_email=#{report.reviewAuthor_email}") Contact Review Author
     .col-lg-2.col-xs-2.col-sm-2
   .row
