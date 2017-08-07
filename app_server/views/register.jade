@@ -20,11 +20,11 @@ block content
           .form-group.card-block
             label.col-lg-10.col-xs-10.col-sm-10.text-primary.size_label.form-control-label(for="password") Password 
             .col-xs-12.col-sm-10
-              input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
+              input(type='password', name='password', class='form-control nomargin', placeholder='Password', required , minlength=8, pattern="(?=(?:[^a-zA-Z]*[a-zA-Z]){2}).*" title="Minimum 2 letters are required")
           .form-group.card-block
             label.col-lg-10.col-xs-10.col-sm-10.text-primary.size_label.form-control-label(for="PasswordConfirm") Confirm Password 
             .col-xs-12.col-sm-10
-              input(type='password', name='confirmedPassword', class='form-control nomargin', placeholder='Password Confirm', required)
+              input(type='password', name='confirmedPassword', class='form-control nomargin', placeholder='Password Confirm', required, minlength=8, pattern="(?=(?:[^a-zA-Z]*[a-zA-Z]){2}).*" title="Minimum 2 letters are required")
           .card.card-outline-warning.bg_y
             button.btn.btn-warning.float-right Submit
         .col-xs-12.col-md-4
