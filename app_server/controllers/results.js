@@ -32,8 +32,10 @@ module.exports.searchResults = function(req, res){
 
 	var APIKey = 'AIzaSyD-gjo3VFiW6AXpPtZ7zLoY-VaoGUZgAuQ';
 	var cx = '004898931646717710217:u1yfik5cc5a';
-	if (req.body.query === ''){
-		res.redirect(/users/);
+	if (req.body.query === '' && req.user.isAdmin === false){
+		res.redirect('/users/');
+	} else if (req.body.query === '' && req.user.isAdmin === true) {
+		res.redirect('/users/admin');
 	} else {
 		var query = req.body.query;	
 	}
@@ -76,5 +78,9 @@ module.exports.searchResults = function(req, res){
 // get the result
 
 module.exports.resultsGet = function (req, res){
-	res.redirect(/users/);
+	if (req.user.isAdmin === false){
+		res.redirect('/users/');
+	} else if (req.user.isAdmin === true){
+		res.redirect('/users/admin');
+	}
 };
