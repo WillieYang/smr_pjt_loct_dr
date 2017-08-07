@@ -10,17 +10,21 @@ block content
       .card.card-outline-primary.bg_y
         form(action="/users/signup", method="post", role="form", name="signup")
           .form-group.card-block
-            label.col-xs-10.col-sm-2.text-primary.size_label.form-control-label(for="username") Username 
+            label.col-lg-10.col-xs-10.col-sm-10.text-primary.size_label.form-control-label(for="username") Username 
             .col-xs-12.col-sm-10
               input(type='text', name='username', class='form-control', placeholder='Username',required, autofocus)
           .form-group.card-block
-            label.col-xs-10.col-sm-2.text-primary.size_label.form-control-label(for="email") Email 
+            label.col-lg-10.col-xs-10.col-sm-10.text-primary.size_label.form-control-label(for="email") Email 
             .col-xs-12.col-sm-10
               input(type='email', name='email', class='form-control', placeholder='Email',required)
           .form-group.card-block
-            label.col-xs-10.col-sm-2.text-primary.size_label.form-control-label(for="password") Password 
+            label.col-lg-10.col-xs-10.col-sm-10.text-primary.size_label.form-control-label(for="password") Password 
             .col-xs-12.col-sm-10
               input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
+          .form-group.card-block
+            label.col-lg-10.col-xs-10.col-sm-10.text-primary.size_label.form-control-label(for="PasswordConfirm") Confirm Password 
+            .col-xs-12.col-sm-10
+              input(type='password', name='confirmedPassword', class='form-control nomargin', placeholder='Password Confirm', required)
           .card.card-outline-warning.bg_y
             button.btn.btn-warning.float-right Submit
         .col-xs-12.col-md-4

@@ -24,10 +24,14 @@ module.exports = function(passport){
                     console.log('Error in SignUp: '+err);
                     return done(err);
                 }
+
+                if (req.body.password != req.body.confirmedPassword){
+                    return done(null, false, req.flash('message','Confirm Password Not Match'));
+                }
                 // already exists
                 if (user) {
                     console.log('The current email address has been used:' + email);
-                    return done(null, false, req.flash('message','The current email address has been used:'));
+                    return done(null, false, req.flash('message','The current email address has been used'));
                 } else {
                     // if there is no user with that email
                     // create the user
