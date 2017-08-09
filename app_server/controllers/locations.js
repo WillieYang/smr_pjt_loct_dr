@@ -205,6 +205,7 @@ module.exports.locationList = function(req, res){
 var renderDetailPage = function(req, res, locationInfo){
 		console.log("name:" + locationInfo.name);
 		console.log("user_id:" + req.user._id);
+		console.log("error lat: " + locationInfo.coords)
 		res.render('location_info', {
 			user: req.user.username,
 			userid: req.user._id,
@@ -305,6 +306,11 @@ var getLocationInfo = function(req, res, callback){
 				console.log("This step all right or not?");
 				if (response_post.statusCode === 201) {
 					console.log("This step all right or not v2?");
+					body_post.coords = {
+						lng: body_post.coords[0],
+						lat: body_post.coords[1]
+					};
+					console.log(body_post);
 					callback(req, res, body_post);
 				}
 			});
