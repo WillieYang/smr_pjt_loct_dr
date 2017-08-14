@@ -21,7 +21,9 @@ block content
           .row
               .col-xs-12.col-sm-12.col-lg-6
                 h5.rating.sideword
-                  +outputRating(location.rating)                p.h6.list-group-item-text.sideword= location.address
+                  +outputRating(location.rating)
+                  p.text-warning Rating from Google
+                p.h6.list-group-item-text.sideword= location.address
                 .card.card-inverse.card-primary
                   .card-header
                     h4.card-title.text-warning Open or Not Open
@@ -45,7 +47,11 @@ block content
                   .card-header
                     h4.card-title.text-warning Location map
                   .card-block
-                    img.img-fluid.img-thumbnail(src="https://maps.googleapis.com/maps/api/staticmap?center=#{location.coords.lat},#{location.coords.lng}&zoom=17&size=400x350&sensor=false&markers=#{location.coords.lat},#{location.coords.lng}&scale=2&key=#{env.StaticMapAPI}")
+                    script.
+                      var targetlat = !{JSON.stringify(lat)};
+                      var targetlng = !{JSON.stringify(lng)};
+                    script(src='/javascripts/map_lovedLocation_route.js')
+                    #map.size_map_info
               .col-lg-12
                 hr
           .row
@@ -54,6 +60,7 @@ block content
                 .card-header
                   a.btn.btn-warning.float-right(href="/location/#{location.place_id}/reviews/new") Add review
                   h4.card-title.text-warning Customer reviews
+                   p.size_p_s.italic.text-warning Rating as You Want
                 .card-block.review-container
                   each review in location.reviews
                     .row

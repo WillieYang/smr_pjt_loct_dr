@@ -206,6 +206,8 @@ var renderDetailPage = function(req, res, locationInfo){
 		console.log("name:" + locationInfo.name);
 		console.log("user_id:" + req.user._id);
 		console.log("error lat: " + locationInfo.coords)
+		var lat = locationInfo.coords.lat;
+		var lng = locationInfo.coords.lng;
 		res.render('location_info', {
 			user: req.user.username,
 			userid: req.user._id,
@@ -219,7 +221,9 @@ var renderDetailPage = function(req, res, locationInfo){
 				context: 'provide accessible wifi and space to help you sit down with laptop and get work done.',
 				callToAction: "If you've been and you like it - or if you don't - please leave a review to help other people just like you."
 			},
-			location: locationInfo
+			location: locationInfo,
+			lat: lat,
+			lng: lng
 	})	
 };
 

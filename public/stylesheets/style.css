@@ -107,6 +107,10 @@ hr { background-color: purple;
     font-size: 1.2em;
 }
 
+.size_p_s {
+    font-size: 0.6em;
+}
+
 .btn-lg {
   margin: 13px;
 }
@@ -138,6 +142,11 @@ hr { background-color: purple;
 .size_map {
     min-height: 700px;
 }
+
+.size_map_info {
+    min-height: 500px;
+}
+
 .footer {
    position:relative;
    bottom:0;
