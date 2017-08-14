@@ -22,7 +22,7 @@ block content
               .col-xs-12.col-sm-12.col-lg-6
                 h5.rating.sideword
                   +outputRating(location.rating)
-                  p.text-warning Rating from Google
+                  span.text-warning.italic &nbsp;&nbsp;Rating from Google
                 p.h6.list-group-item-text.sideword= location.address
                 .card.card-inverse.card-primary
                   .card-header
@@ -60,7 +60,7 @@ block content
                 .card-header
                   a.btn.btn-warning.float-right(href="/location/#{location.place_id}/reviews/new") Add review
                   h4.card-title.text-warning Customer reviews
-                   p.size_p_s.italic.text-warning Rating as You Want
+                    span.size_p_s.italic.text-warning &nbsp;&nbsp;Rating as You Like
                 .card-block.review-container
                   each review in location.reviews
                     .row
