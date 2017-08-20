@@ -7,30 +7,8 @@ var sendJsonResponse = function(res, status, content){
 	res.json(content);
 };
 
-// functions to limit the results of distance
-// using IIFE to wrap the code
-// this method might be useless for the format of coordinates is GeoJSON.
-var theEarth = (function(){
-
-	var earthRadius = 6371;
-
-	var getDistanceFromRadians = function(rads){
-		return parseFloat(rads * earthRadius);};
-
-	var getRadiansFromDistance = function(distance){
-		return parseFloat(distance / earthRadius);};
-
-	return {
-		getDistanceFromRadians: getDistanceFromRadians,
-		getRadiansFromDistance: getRadiansFromDistance
-	};
-})();
-
 // location in locationlist create
 module.exports.locationsCreate = function(req, res){
-	// console.log("openingDays:" + req.body.days1);
-	// console.log("openingTimes:" + req.body.opening1);
-	// console.log("closingTimes:" + req.body.closing1);
 	console.log("name: " + req.body.name);
 	console.log("address: " + req.body.address);
 
@@ -49,51 +27,6 @@ module.exports.locationsCreate = function(req, res){
 			sendJsonResponse(res, 201, location);
 		}
 	}); console.log("facilities:" + req.body.facilities.split(","));
-};
-
-// locationlist get, and it would not be used. (only for hard coded location data)
-module.exports.locationsListByDistance = function(req, res){
-	var lng = parseFloat(req.query.lng);
-	var lat = parseFloat(req.query.lat);
-	console.log("lng:" + lng);
-	console.log("lat:" + lat);
-	var point = {
-		type: "Point",
-		coordinates: [lng, lat] // Form of GeoJSON Point.
-	};
-	console.log("coordinates:" + point.coordinates[0]);
-	var geoOptions = {
-		spherical: true,
-		maxDistance: 300,
-		num: 10 
-	};
-	if ((!lng && lng!== 0) || (!lat && lat!== 0)) {
-		sendJsonResponse(res, 404, {
-			"message": "longitude and latitude query are required"
-		});
-		return;
-	}
-	Location.geoNear(point, geoOptions, function(err, results, stats){
-		var locations = [];
-		console.log("Geo Results:" + results);
-		console.log("Geo stats:" + stats);
-
-		if (err){
-			sendJsonResponse(res, 404, err);
-		} else {
-		  results.forEach(function(loc){
-			locations.push({
-				distance: loc.dis,
-				name: loc.obj.name,
-				address: loc.obj.address,
-				rating: loc.obj.rating,
-				facilities: loc.obj.facilities,
-				_id: loc.obj._id
-			});
-		});
-		sendJsonResponse(res, 200, locations);			
-		}
-	});
 };
 
 // get location in locationlist by place_id

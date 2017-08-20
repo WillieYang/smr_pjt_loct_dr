@@ -6,7 +6,6 @@ var ctrlUserLocation = require('../controllers/userLocation');
 var ctrlReports = require('../controllers/reports');
 
 // locations
-router.get('/locations', ctrlLocations.locationsListByDistance);
 router.post('/locations', ctrlLocations.locationsCreate);
 router.get('/locations/:locationid', ctrlLocations.locationsReadOne);
 router.put('/locations/:locationid', ctrlLocations.locationsUpdateOne);
