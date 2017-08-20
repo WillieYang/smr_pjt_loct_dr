@@ -1,14 +1,6 @@
 // Require the Mongoose
 var mongoose = require('mongoose');
 
-// Schema for Opening Time (Nested Schema of locationSchema)
-// var openingTimeSchema = new mongoose.Schema({
-// 	days: {type: String, required: true},
-// 	opening: String,
-// 	closing: String,
-// 	closed: {type: Boolean, required: true}
-// });
-
 // Schema for Reviews (Nested Schema of locationSchma)
 var reviewSchema = new mongoose.Schema({
 	author: {type: String, required: true},

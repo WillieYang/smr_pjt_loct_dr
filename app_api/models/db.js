@@ -37,16 +37,6 @@ mongoose.connection.on('disconnected', function() {
 	console.log('Mongoose disconnected');
 });
 
-// Monitoring the connection with Mongoose connection events(Created database)
-
-// logDB.on('connected', function (){
-// 	console.log('Mongoose connected to ' + dbURIlog);
-// });
-
-// logDB.close(function () {
-// 	console.log('Mongoose log disconnected');
-// });
-
 // Create a function to shutdown the connection.
 var gracefulShutdown = function(msg, callback){
 	mongoose.connection.close(function(){
