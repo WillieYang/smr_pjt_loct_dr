@@ -56,44 +56,6 @@ module.exports.locationsReadOne = function(req, res){
 	  }
 	};
 
-// update the location information, reference key: place_id
-module.exports.locationsUpdateOne = function(req, res){
-	if (!req.params.locationid) {
-		sendJsonResponse(res, 404, {
-			"message": "Not found, locationid required"
-		});
-		return;
-	}
-	Location
-		.findOne({'place_id': req.params.locationid})
-		.select('-reviews, -rating')
-		.exec(
-			function(err, location){
-				if (!location){
-					sendJsonResponse(res, 404, {
-						"message": "locationid not found"
-					});
-					return;
-				} else if (err) {
-					sendJsonResponse(res, 400, err);
-					return;
-				}
-				location.name = req.body.name;
-				location.address = req.body.address;
-				location.facilities = req.body.facilities;
-				location.coords = [parseFloat(req.body.lng), parseFloat(req.body.lat)];
-				location.openingTimes = req.body.open_or_not;
-				location.save(function(err, location){
-					if (err) {
-						sendJsonResponse(res, 404, err);
-					} else {
-						sendJsonResponse(res, 200, location);
-					}
-				});
-			}
-		);
-};
-
 // delete
 module.exports.locationsDeleteOne = function(req, res){
 	var locationid = req.params.locationid;
