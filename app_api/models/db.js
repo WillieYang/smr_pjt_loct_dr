@@ -4,6 +4,13 @@ var mongoose = require('mongoose');
 // Create the URI of database and set it based on environment.
 var dbURI = 'mongodb://location:location3302@localhost/smr_pjt_loct';
 
+if (process.env.NODE_ENV === 'production') {
+	console.log("test:" + process.env.MONGODB_URI);
+	dbURI = process.env.MONGODB_URI;
+	console.log('test the dbURI:' + dbURI);
+}
+
+
 // Connect the database using Mongoose
 
 mongoose.connect(dbURI, function (err, res) {
