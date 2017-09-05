@@ -14,14 +14,6 @@ if (process.env.NODE_ENV === 'production') {
 // render function of get the location list
 var renderLocationList = function(req, res, responseBody){
 	var errorMessage;
-	// console.log("responseBody:"+ responseBody.results);
-	// console.log("length:" + responseBody.results.length);
-	// var results = [];
-	// for (var i in responseBody.results){
-	// 	results.push(responseBody.results[i]);
-	// }
-	// console.log("results:"+results);
-	// var responseBody = [];
 	console.log("responseBody:" + responseBody);
 
 	for (var i =0; i < responseBody.length; i++){
@@ -48,10 +40,6 @@ var renderLocationList = function(req, res, responseBody){
 		errorMessage: errorMessage
 	});
 };
-// module.exports.locationListPost = function(res,req){
-// 	console.log("locationListPost data reveal");
-// 	res.render('locations_list');
-// };
 
 // function to format the distance
 var DistanceFormat = function(distance){
@@ -126,11 +114,6 @@ module.exports.locationList = function(req, res){
 				console.log('address:' + location[i].vicinity);
 				console.log('facilities:' + location[i].types);
 				console.log('place_id:' + location[i].place_id);
-				// if (typeof (location[i].opening_hours.open_now) === 'undefined'){
-				// 	var open_or_not = [];
-				// } else {
-				// 	var open_or_not = location[i].opening_hours.open_now;
-				// }
 				try{
 					var open_or_not = location[i].opening_hours.open_now;	
 				}catch(e){
@@ -169,34 +152,6 @@ module.exports.locationList = function(req, res){
 			renderLocationList(req, res, results);
 		}
 	});
-
-	// path = '/api/locations';
-	// requestOptions = {
-	// 	url: apiChoosing.server + path,
-	// 	method: "GET",
-	// 	json: {},
-	// 	qs: {
-	// 		lng: lng,
-	// 		lat: lat,
-	// 		maxDistance: 300
-	// 	}
-	// };
-	// request(requestOptions, function(err, response, body){
-	// 	console.log("responseBody" + body);
-	// 	var i, data;
-	// 	data = body;
-	// 	if (response.statusCode === 200 && data.length) {
-	// 		for (i = 0; i < data.length; i++){
-	// 		data[i].distance = DistanceFormat(data[i].distance);
-	// 		}
-	// 	}
-	// 	if (data === body) {
-	// 		console.log("These two vars are equal.");
-	// 	} else {
-	// 		console.log("These two vars are not equal.");
-	// 	}
-	// 	renderLocationList(req, res, data);
-	// });
 };
 
 
@@ -246,10 +201,6 @@ var showError = function(req,res, statusCode){
 // function to get location information
 var getLocationInfo = function(req, res, callback){
 	
-	// var location = req.query.location;
-	// console.log("Check the type of location:" + (typeof location));
-	// console.log("get the query location:"+ location.length);
-	// console.log("location type: " + JSON.stringify(location));
 	var name = req.query.name;
 	var rating = req.query.rating;
 	var address = req.query.address;

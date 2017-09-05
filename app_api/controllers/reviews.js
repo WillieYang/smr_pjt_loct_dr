@@ -48,8 +48,6 @@ var addReview = function(req, res, location) {
 	        sendJsonResponse(res, 400, err);
 	      } else {
 	      	console.log("location.place_id: " + location.place_id);
-	        // updateAverageRating(location._id);
-	        // thisReview = location.reviews[location.reviews.length - 1];
 	        sendJsonResponse(res, 201, location);
 	      }
 	   });
